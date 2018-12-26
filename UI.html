@@ -15,30 +15,50 @@
             height: 500px;
             margin: 20px;
         }
-
         .bb {
             margin: 50px;
             border: 1px solid #ccc;
             padding: 50px;
         }
+        .Emoji{
+
+        }
     </style>
 </head>
 <body>
 <div class="bb">
-    <div class="page">
+   <div class="Emoji">
+       <div class="EmojiInput" tabindex="0" contenteditable id="EmojiVal"></div>
+       <div class="EmojiLable ovh">
+           <div class="EmojiLog float-left">
+               <img src="Emoji/title.png" alt="">
+           </div>
+           <button class="EmojiBtn kui-btn kui-primary float-right">确定</button>
+       </div>
+       <!--<div class="Expression">-->
+           <!--<i class="EmojiI"></i>-->
+           <!--<div class="EmojiTitle">-->
+               <!--<i>表情</i>-->
+               <!--<span>&times;</span>-->
+           <!--</div>-->
+           <!--<ul class="EmojiFace"></ul>-->
+       <!--</div>-->
+       <div class="EmojiRendering">
 
-    </div>
+       </div>
+   </div>
+
+
+
+
+
+
 </div>
 <script type="text/javascript">
-	Kui.Page({
-			pageStart: 1,   //开始是的页码数
-			pageSum: 15,    //总的页码数
-			pageNumber: 7,  //为单数
-			pageIndex: function (index) {
-				console.log(index);  //点击的第几个
-			}
-		}
-	)
+
+
+
+
 </script>
 </body>
 </html>
