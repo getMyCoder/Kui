@@ -29,7 +29,11 @@ Kui.prototype.Vars = {
 		pageIndex: function () {
 		}
 	},
-	ProgessSize: ""
+	ProgessSize: "",
+	setEmojiStyle: {
+		png: 0,
+		gif: 0,
+	}
 };
 Kui.prototype.load = function () {
 	$(function () {
@@ -221,34 +225,67 @@ Kui.prototype.load = function () {
 		});
 		// 表情
 		var EmojiHtml = '<div class="Expression"><i class="EmojiI"></i><div class="EmojiTitle"><i>表情</i><span>&times;</span></div><ul class="EmojiFace"></ul></div>';
-		var setLengthEmoji = 52;
-		
-		
 		$(".EmojiLog").click(function () {
+			$(".Expression").remove();
 			$(".Emoji").append(EmojiHtml);
-			for (var i = 1; i <= setLengthEmoji; i++) {
-				$(".EmojiFace").append("<li><img src='Emoji/img/" + i + ".png'></li>")
-			}
+			AddEmojiImg(Kui.Vars.setEmojiStyle);
 			$("#EmojiVal").focus();
+			$(".Expression").css({
+				"left": $(".EmojiLog").position().left - 17 + 'px',
+				"top": $(".EmojiLog").position().top + 32 + 'px'
+			});
+			$(".EmojiTitle").find("span").click(function () {
+				$(".Expression").remove();
+			});
+			$(".EmojiFace li").each(function () {
+				$(this).click(function () {
+					$("#EmojiVal").focus();
+					var FaceImg = $(this).find("img").attr("src");
+					var FaceImgVal = "<img src=" + FaceImg + ">";
+					insertHtmlAtCaret(FaceImgVal);
+				})
+			});
+			
 		});
-		$(".Expression").css({
-			"left": $(".EmojiLog").position().left - 17 + 'px',
-			"top": $(".EmojiLog").position().top + 32 + 'px'
-		});
-		$(".EmojiTitle").find("span").click(function () {
-			$(".Expression").hide()
-		});
-		$(".EmojiFace li").each(function () {
-			$(this).click(function () {
-				$("#EmojiVal").focus();
-				var FaceImg = $(this).find("img").attr("src");
-				var FaceImgVal = "<img src=" + FaceImg + ">";
-				insertHtmlAtCaret(FaceImgVal);
-			})
-		});
+		$(document).click(function (evt) {
+			var DEvtX = evt.clientX;
+			var DEvtY = evt.clientY;
+			blurClickEvent($(".Expression"),false,DEvtX,DEvtY);
+		})
+		function AddEmojiImg(style) {
+			for (var key in style) {
+				var keyString = key.toString();
+				for (var A = 1; A <= style[key]; A++) {
+					$(".EmojiFace").append("<li><img src='Emoji/" + keyString + "/" + A + "." + keyString + "'></li>")
+				}
+			}
+		}
+		$(".EmojiBtn").click(function () {
+			$(".EmojiRendering").html($("#EmojiVal").html())
+		})
 	})
 };
 
+// 失焦事件
+
+
+function blurClickEvent(Obj, flage, DEvtX, DEvtY) {
+	if (Obj.length > 0) {
+		var ObjStyle = {
+			width: Obj.width(),
+			height: Obj.height(),
+			top: Obj.offset().top,
+			left: Obj.offset().left
+		};
+		if (((DEvtY < ObjStyle.top - 30) || (DEvtY > (ObjStyle.top + ObjStyle.height))) || ((DEvtX < ObjStyle.left) || (DEvtX > (ObjStyle.left + ObjStyle.width)))) {
+			if (flage) {
+				Obj.hide();
+			} else {
+				Obj.remove()
+			}
+		}
+	}
+}
 
 function insertHtmlAtCaret(html) {
 	var sel, range;
@@ -280,8 +317,7 @@ function insertHtmlAtCaret(html) {
 		// IE < 9
 		document.selection.createRange().pasteHTML(html);
 	}
-}
-
+};
 Kui.prototype.open = function (valMsg) {
 	var valMsgS = $.extend({
 		title: "标题",
@@ -399,8 +435,11 @@ Kui.prototype.Page = function (pageVal) {
 Kui.prototype.Progess = function (ProgessVal) {
 	Kui.Vars.ProgessSize = ProgessVal;
 };
-Kui.prototype.Emoji = function () {
-
+Kui.prototype.Emoji = function (EmojiVal) {
+	Kui.Vars.setEmojiStyle = $.extend({
+		png: 0,
+		gif: 0,
+	}, EmojiVal);
 };
 
 

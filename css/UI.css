@@ -631,7 +631,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .EmojiRendering {
-    height:200px;
+    padding: 15px;
+    height: 200px;
     overflow-y: auto;
     border: 1px solid #ccc;
     -webkit-border-radius: 3px;
@@ -639,6 +640,13 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3px;
 }
 
+.CascadeFlow {}
+
+.CascadeFlow ul {position: relative; }
+
+.CascadeFlow ul li { width: 20%;margin: 2.5%;float: left;position: absolute;top: 0;left: 0; }
+
+.CascadeFlow ul li img {width: 100%;}
 
 
 
