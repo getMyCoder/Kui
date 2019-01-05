@@ -33,6 +33,11 @@ Kui.prototype.Vars = {
 	setEmojiStyle: {
 		png: 0,
 		gif: 0,
+	},
+	// 瀑布流
+	CascadeF:{
+		size:4,
+		url:''
 	}
 };
 Kui.prototype.load = function () {
@@ -251,7 +256,7 @@ Kui.prototype.load = function () {
 			var DEvtX = evt.clientX;
 			var DEvtY = evt.clientY;
 			blurClickEvent($(".Expression"),false,DEvtX,DEvtY);
-		})
+		});
 		function AddEmojiImg(style) {
 			for (var key in style) {
 				var keyString = key.toString();
@@ -259,16 +264,55 @@ Kui.prototype.load = function () {
 					$(".EmojiFace").append("<li><img src='Emoji/" + keyString + "/" + A + "." + keyString + "'></li>")
 				}
 			}
-		}
+		};
 		$(".EmojiBtn").click(function () {
 			$(".EmojiRendering").html($("#EmojiVal").html())
+		});
+		// 瀑布流
+		var TopMargin=15;
+		var getMaxTopH=new Array();
+		for(var C=0;C<Kui.Vars.CascadeF.size;C++){
+			$(".CascadeFlow ul li").eq(C).css({
+				"top":"0",
+				"left":100/Kui.Vars.CascadeF.size*C+"%"
+			});
+		}
+		$(".CascadeFlow ul li").css({
+			"width":100/Kui.Vars.CascadeF.size+"%"
+		});
+		$(".CascadeFlow ul li").each(function (index) {
+			if(index<Kui.Vars.CascadeF.size){
+				var getItemsT=$(this).position().top+$(this).height();
+				var getItemsL=$(this).position().left;
+				getMaxTopH.push([getItemsL,getItemsT])
+			}else{
+				var minTopVal=getMaxTopH[0][1];
+				var items=0;
+				for(var h=0;h<getMaxTopH.length;h++){
+					if(getMaxTopH[h][1]<minTopVal){
+						minTopVal=getMaxTopH[h][1];
+						items=h;
+					}
+				}
+				$(this).css({
+					"top":getMaxTopH[items][1]+TopMargin+"px",
+					"left":getMaxTopH[items][0]+"px"
+				});
+				var getItemsT=$(this).position().top+$(this).height();
+				var getItemsL=$(this).position().left;
+				getMaxTopH[items][1]=getItemsT;
+			}
 		})
+		
+		
+		
+		
 	})
 };
 
+
+
 // 失焦事件
-
-
 function blurClickEvent(Obj, flage, DEvtX, DEvtY) {
 	if (Obj.length > 0) {
 		var ObjStyle = {
@@ -359,7 +403,6 @@ Kui.prototype.close = function () {
 		closeDiv($(".closeSubmit"));
 	})
 };
-
 function closeDiv() {
 	$(".popMain").hide();
 	$(".popCon").animate({
@@ -441,6 +484,15 @@ Kui.prototype.Emoji = function (EmojiVal) {
 		gif: 0,
 	}, EmojiVal);
 };
+
+Kui.prototype.CascadeFlow = function (CFVal) {
+	Kui.Vars.CascadeF = $.extend({
+		size:4,
+		url:[]
+	}, CFVal);
+};
+
+
 
 
 var Kui = new Kui();
