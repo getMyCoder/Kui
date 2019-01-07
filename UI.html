@@ -10,53 +10,31 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/UI.js"></script>
     <style type="text/css">
-        .ss {
-            width: 500px;
-            height: 500px;
-            margin: 20px;
-        }
         .bb {
-            margin: 50px;
             border: 1px solid #ccc;
-            padding: 50px;
-        }
-        .Emoji{
-
+            /*padding: 50px;*/
+            width: 1000px;
+            margin: 50px auto;
+            height: 500px;
         }
     </style>
 </head>
 <body>
 <div class="bb">
-   <div class="Emoji">
-       <div class="EmojiInput" tabindex="0" contenteditable id="EmojiVal"></div>
-       <div class="EmojiLable ovh">
-           <div class="EmojiLog float-left">
-               <img src="Emoji/title.png" alt="">
-           </div>
-           <button class="EmojiBtn kui-btn kui-primary float-right">确定</button>
-       </div>
-       <!--<div class="Expression">-->
-           <!--<i class="EmojiI"></i>-->
-           <!--<div class="EmojiTitle">-->
-               <!--<i>表情</i>-->
-               <!--<span>&times;</span>-->
-           <!--</div>-->
-           <!--<ul class="EmojiFace"></ul>-->
-       <!--</div>-->
-       <div class="EmojiRendering">
-
-       </div>
-   </div>
-
-
-
-
-
+    <div class="banner" style="height: 300px">
+        <ul>
+            <li class="kui-primary">1</li>
+            <li class="kui-warning">2</li>
+            <li class="kui-danger">3</li>
+            <li class="kui-success">4</li>
+        </ul>
+    </div>
 
 </div>
+
+
 <script type="text/javascript">
-
-
+	Kui.Banner()
 
 
 </script>

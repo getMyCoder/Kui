@@ -38,6 +38,10 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
+.clear {
+    clear: both;
+}
+
 /*栅格系统*/
 .kui-success {
     background: #67C23A !important;
@@ -481,7 +485,6 @@ h1, h2, h3, h4, h5, h6 {
     -moz-border-radius: 3px;
     border-radius: 3px;
     overflow: hidden;
-    background: red;
 }
 
 .progess-num {
@@ -644,9 +647,67 @@ h1, h2, h3, h4, h5, h6 {
 
 .CascadeFlow ul {position: relative; }
 
-.CascadeFlow ul li { width: 20%;margin: 2.5%;float: left;position: absolute;top: 0;left: 0; }
+.CascadeFlow ul li { float: left;position: absolute; }
 
-.CascadeFlow ul li img {width: 100%;}
+.CascadeFlow ul li img {width: 90%;margin: 0 5%;}
+
+.movePop {
+    position: absolute;
+    z-index: 99999;
+    background: #fff;
+    box-shadow: 0 0 5px 0 #ccc;
+    display: none;
+}
+
+.movePopTitle {
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    background: #f0f0f0;
+    cursor: move;
+}
+
+.movePopTitle h2 {
+    float: left;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 30px;
+    padding-left: 15px;
+    color: #666;
+}
+
+.movePopTitle span {
+    float: right;
+    font-size: 18px;
+    color: #666;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.movePopCon {
+    padding: 0 15px;
+}
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner ul {
+    height: inherit;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner ul li {
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
 
 
 

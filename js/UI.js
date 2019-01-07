@@ -1,7 +1,5 @@
 var DW = document.documentElement.clientWidth;
 var DH = document.documentElement.clientHeight;
-var popLable = '<div class="pop"><div class="popCon"><div class="popMain"><div class="popHead"><i>标题</i><span class="closePop closeSpan">&times;</span></div><div class="popBody">内容</div><div class="popFoot"><span class="popSpan"><button class="kui-btn kui-primary closeSubmit">确定</button></span><span class="popSpan"><button class="kui-btn kui-info closePop">取消</button></span></div></div></div></div>';
-var tipsLable = '<div class="Tips kui-border-radius3">操作成功</div>';
 
 // 构造函数
 function Kui() {
@@ -30,14 +28,15 @@ Kui.prototype.Vars = {
 		}
 	},
 	ProgessSize: "",
+	ProgessSizeColor: "",
 	setEmojiStyle: {
 		png: 0,
 		gif: 0,
 	},
 	// 瀑布流
-	CascadeF:{
-		size:4,
-		url:''
+	CascadeF: {
+		size: 4,
+		Mtop: 15
 	}
 };
 Kui.prototype.load = function () {
@@ -66,12 +65,12 @@ Kui.prototype.load = function () {
 			$(".kui-anim-down").hide();
 			$(".kui-anim-down").slideDown()
 		});
-		// 选项卡
-		$(".pop").height(DH);
-		$(".popCon").css({
-			"top": (DH - $(".popCon").height()) / 2 - 50 + "px",
-			"left": (DW - $(".popCon").width()) / 2 + "px",
-		});
+	})
+};
+// 方法
+Kui.prototype.FunLaod = {
+	// 选项卡
+	setKuiTabFun: function () {
 		$(".kuiTab-header").append("<ul></ul>");
 		$(".kuiTab-header ul").append(Kui.Vars.TabLi);
 		$(".kuiTab-body .kuiTab-items").eq(0).show();
@@ -82,7 +81,9 @@ Kui.prototype.load = function () {
 				$(".kuiTab-body .kuiTab-items").eq(index).show().siblings().hide()
 			})
 		});
-		// 折叠面板
+	},
+	// 折叠面板
+	setPanelFun: function () {
 		$(".panel").append("<ul></ul>");
 		$(".panel ul").append(Kui.Vars.PanelLi);
 		$(".panel ul li").eq(0).find(".panelCon").show();
@@ -96,7 +97,9 @@ Kui.prototype.load = function () {
 				$(that).find(".panelCon").slideDown(100)
 			})
 		});
-		//滑块
+	},
+	//滑块
+	setSliderFun: function () {
 		var setSilderDiv = '<div class="sliderBefore"></div><div class="sliderBox"></div>';
 		$(".slider").append(setSilderDiv);
 		var slideLV = $(".sliderBox").width() / 2;
@@ -144,8 +147,9 @@ Kui.prototype.load = function () {
 				$(document).unbind('mousemove');
 			});
 		}
-		
-		// 分页
+	},
+	// 分页
+	setPageFun: function () {
 		var pageLable = '<button class="pageFirst">首页</button><button class="pageP">上一页</button><div class="pageCon">' + Kui.Vars.PageItems + '</div><button class="pageN">下一页</button><button class="pageLast">尾页</button>';
 		$(".page").append(pageLable);
 		if (Kui.Vars.PageSize.pageSum > Kui.Vars.PageSize.pageNumber) {
@@ -213,10 +217,13 @@ Kui.prototype.load = function () {
 				$(".pageCon span").eq(Kui.Vars.PageSize.pageNumber - (Kui.Vars.PageSize.pageSum - IndexVal) - 1).addClass("pageActive").siblings().removeClass("pageActive");
 			}
 		}
-		
-		// 进度条
+	},
+	// 进度条
+	setProgressFun: function () {
 		var progessHtml = '<div class="progress-bar"></div><div class="progess-num"><span>20%</span><p></p></div>';
 		$(".progress").append(progessHtml);
+		$(".progress-bar").addClass(Kui.Vars.ProgessSizeColor);
+		console.log(Kui.Vars.ProgessSizeColor);
 		$(".progress-bar").width(Kui.Vars.ProgessSize);
 		$(".progess-num").css({
 			"left": $(".progress-bar").width() - $(".progess-num").width() / 2 + "px"
@@ -228,7 +235,9 @@ Kui.prototype.load = function () {
 			});
 			$(".progess-num").find("span").text(Kui.Vars.ProgessSize)
 		});
-		// 表情
+	},
+	// 表情
+	setEmojiFun: function () {
 		var EmojiHtml = '<div class="Expression"><i class="EmojiI"></i><div class="EmojiTitle"><i>表情</i><span>&times;</span></div><ul class="EmojiFace"></ul></div>';
 		$(".EmojiLog").click(function () {
 			$(".Expression").remove();
@@ -255,8 +264,9 @@ Kui.prototype.load = function () {
 		$(document).click(function (evt) {
 			var DEvtX = evt.clientX;
 			var DEvtY = evt.clientY;
-			blurClickEvent($(".Expression"),false,DEvtX,DEvtY);
+			blurClickEvent($(".Expression"), false, DEvtX, DEvtY);
 		});
+		
 		function AddEmojiImg(style) {
 			for (var key in style) {
 				var keyString = key.toString();
@@ -268,49 +278,118 @@ Kui.prototype.load = function () {
 		$(".EmojiBtn").click(function () {
 			$(".EmojiRendering").html($("#EmojiVal").html())
 		});
-		// 瀑布流
-		var TopMargin=15;
-		var getMaxTopH=new Array();
-		for(var C=0;C<Kui.Vars.CascadeF.size;C++){
+	},
+	// 瀑布流
+	setCascadeFlowFun: function () {
+		var TopMargin = Kui.Vars.CascadeF.Mtop;
+		var getMaxTopH = new Array();
+		$(".CascadeFlow ul").hide();
+		for (var C = 0; C < Kui.Vars.CascadeF.size; C++) {
 			$(".CascadeFlow ul li").eq(C).css({
-				"top":"0",
-				"left":100/Kui.Vars.CascadeF.size*C+"%"
+				"top": "0",
+				"left": 100 / Kui.Vars.CascadeF.size * C + "%"
 			});
 		}
 		$(".CascadeFlow ul li").css({
-			"width":100/Kui.Vars.CascadeF.size+"%"
+			"width": 100 / Kui.Vars.CascadeF.size + "%"
 		});
-		$(".CascadeFlow ul li").each(function (index) {
-			if(index<Kui.Vars.CascadeF.size){
-				var getItemsT=$(this).position().top+$(this).height();
-				var getItemsL=$(this).position().left;
-				getMaxTopH.push([getItemsL,getItemsT])
-			}else{
-				var minTopVal=getMaxTopH[0][1];
-				var items=0;
-				for(var h=0;h<getMaxTopH.length;h++){
-					if(getMaxTopH[h][1]<minTopVal){
-						minTopVal=getMaxTopH[h][1];
-						items=h;
+		$(".CascadeFlow ul").fadeIn(100, function () {
+			$(".CascadeFlow ul li").each(function (index) {
+				if (index < Kui.Vars.CascadeF.size) {
+					var getItemsT = $(this).position().top + $(this).height();
+					var getItemsL = $(this).position().left;
+					getMaxTopH.push([getItemsL, getItemsT])
+				} else {
+					var minTopVal = getMaxTopH[0][1];
+					var items = 0;
+					for (var h = 0; h < getMaxTopH.length; h++) {
+						if (getMaxTopH[h][1] < minTopVal) {
+							minTopVal = getMaxTopH[h][1];
+							items = h;
+						}
 					}
+					$(this).css({
+						"top": getMaxTopH[items][1] + TopMargin + "px",
+						"left": getMaxTopH[items][0] + "px"
+					});
+					var getItemsT = $(this).position().top + $(this).height();
+					var getItemsL = $(this).position().left;
+					getMaxTopH[items][1] = getItemsT;
 				}
-				$(this).css({
-					"top":getMaxTopH[items][1]+TopMargin+"px",
-					"left":getMaxTopH[items][0]+"px"
-				});
-				var getItemsT=$(this).position().top+$(this).height();
-				var getItemsL=$(this).position().left;
-				getMaxTopH[items][1]=getItemsT;
-			}
+			})
 		})
+	},
+	// 拖动弹窗
+	setMovePop: function () {
+		$(".movePop").hide();
+		$(".movePop").show();
+		$(".movePop").css({
+			"top": (DH - $(".movePop").height()) / 2 * 0.8 + "px",
+			"left": (DW - $(".movePop").width()) / 2 + "px"
+		});
+		$(".movePopTitle").mousedown(function (evtE) {
+			var getMovePopL = $(".movePop").offset().left;
+			var getMovePopT = $(".movePop").offset().top;
+			var movePopEX = evtE.clientX;
+			var movePopEY = evtE.clientY;
+			$(document).bind("mousemove", function (evtM) {
+				var movePopMX = evtM.clientX;
+				var movePopMY = evtM.clientY;
+				$(".movePop").css({
+					"top": getMovePopT + (movePopMY - movePopEY) + "px",
+					"left": getMovePopL + (movePopMX - movePopEX) + "px"
+				})
+			})
+		});
+		$(document).mouseup(function () {
+			$(document).unbind("mousemove")
+		});
+		$(".movePopTitle").find(".closeMovePop").click(function () {
+			$(".movePop").hide()
+		})
+	},
+	// banner
+	setBanner: function () {
+		var setItemsLi = 0;
+		var setItemsWidth = $(".banner ul li").width();
+		var setItemsZindex = 999;
 		
+		$(".banner ul li").css({"left": setItemsWidth+"px"});
+		$(".banner ul li").eq(setItemsLi).css({"zIndex": setItemsZindex,"left": 0});
 		
+		$(".banner ul li").eq(setItemsLi + 1).css({
+			"left": setItemsWidth + "px"
+		});
+		setInterval(function () {
+			$(".banner ul li").eq(setItemsLi).animate({
+				"left": -setItemsWidth + "px"
+			}, 300);
+			$(".banner ul li").eq(setItemsLi + 1).animate({
+				"left": 0 + "px",
+				"zIndex": setItemsZindex
+			}, 300,function () {
+				$(".banner ul li").eq(setItemsLi).animate({
+					"left": 0 + "px"
+				}, 300);
+			});
+			
+			setItemsLi++;
+			setItemsZindex++;
+			if(setItemsLi==$(".banner ul li").length){
+				setItemsLi=-1;
+			}
+			
+		}, 2000)
 		
-		
-	})
+	}
 };
 
-
+// 加载事件
+function getjQuery(getFunction) {
+	$(function () {
+		getFunction()
+	})
+}
 
 // 失焦事件
 function blurClickEvent(Obj, flage, DEvtX, DEvtY) {
@@ -329,7 +408,7 @@ function blurClickEvent(Obj, flage, DEvtX, DEvtY) {
 			}
 		}
 	}
-}
+};
 
 function insertHtmlAtCaret(html) {
 	var sel, range;
@@ -368,7 +447,13 @@ Kui.prototype.open = function (valMsg) {
 		text: "",
 		message: "asdf"
 	}, valMsg);
+	var popLable = '<div class="pop"><div class="popCon"><div class="popMain"><div class="popHead"><i>标题</i><span class="closePop closeSpan">&times;</span></div><div class="popBody">内容</div><div class="popFoot"><span class="popSpan"><button class="kui-btn kui-primary closeSubmit">确定</button></span><span class="popSpan"><button class="kui-btn kui-info closePop">取消</button></span></div></div></div></div>';
 	$("body").append(popLable);
+	$(".pop").height(DH);
+	$(".popCon").css({
+		"top": (DH - $(".popCon").height()) / 2 - 50 + "px",
+		"left": (DW - $(".popCon").width()) / 2 + "px",
+	});
 	$(".openPop").click(function () {
 		$(".popHead i").text(valMsgS.title);
 		if (valMsgS.text != "") {
@@ -403,6 +488,7 @@ Kui.prototype.close = function () {
 		closeDiv($(".closeSubmit"));
 	})
 };
+
 function closeDiv() {
 	$(".popMain").hide();
 	$(".popCon").animate({
@@ -417,7 +503,8 @@ Kui.prototype.promptBox = function (valMsg) {
 	var valMsgP = $.extend({
 		TipsType: "success",
 		TipsMsg: "操作成功"
-	}, valMsg)
+	}, valMsg);
+	var tipsLable = '<div class="Tips kui-border-radius3">操作成功</div>';
 	$("body").append(tipsLable);
 	var setType = "Tips-" + valMsgP.TipsType;
 	$(".Tips").addClass(setType);
@@ -438,6 +525,7 @@ Kui.prototype.kuiTab = function (TabVal) {
 	for (var i = 0; i < Kui.Vars.TabSize.length; i++) {
 		Kui.Vars.TabLi += "<li>" + Kui.Vars.TabSize[i] + "</li>"
 	}
+	getjQuery(Kui.FunLaod.setKuiTabFun)
 };
 Kui.prototype.Panel = function (PanelVal) {
 	Kui.Vars.PanelSize = $.extend([
@@ -448,12 +536,14 @@ Kui.prototype.Panel = function (PanelVal) {
 	for (var i = 0; i < Kui.Vars.PanelSize.length; i++) {
 		Kui.Vars.PanelLi += "<li><h3>" + Kui.Vars.PanelSize[i].title + "</h3><div class='panelCon'>" + Kui.Vars.PanelSize[i].message + "</div></li>"
 	}
+	getjQuery(Kui.FunLaod.setPanelFun)
 };
 Kui.prototype.Slider = function (SliderVal) {
 	Kui.Vars.SliderSize = $.extend({
 		SilderPro: "20%",
 		SilderType: "infor"
-	}, SliderVal)
+	}, SliderVal);
+	getjQuery(Kui.FunLaod.setSliderFun)
 };
 Kui.prototype.Page = function (pageVal) {
 	Kui.Vars.PageSize = $.extend({
@@ -474,25 +564,34 @@ Kui.prototype.Page = function (pageVal) {
 		}
 	}
 	Kui.Vars.PageItems += '<i class="pageEI">...</i><span>' + Kui.Vars.PageSize.pageSum + '</span>';
+	getjQuery(Kui.FunLaod.setPageFun)
 };
-Kui.prototype.Progess = function (ProgessVal) {
+Kui.prototype.Progess = function (ProgessVal, colorBg) {
 	Kui.Vars.ProgessSize = ProgessVal;
+	Kui.Vars.ProgessSizeColor = colorBg;
+	getjQuery(Kui.FunLaod.setProgressFun)
 };
 Kui.prototype.Emoji = function (EmojiVal) {
 	Kui.Vars.setEmojiStyle = $.extend({
 		png: 0,
 		gif: 0,
 	}, EmojiVal);
+	getjQuery(Kui.FunLaod.setEmojiFun)
 };
-
 Kui.prototype.CascadeFlow = function (CFVal) {
 	Kui.Vars.CascadeF = $.extend({
-		size:4,
-		url:[]
+		size: 4,
+		Mtop: 15
 	}, CFVal);
+	getjQuery(Kui.FunLaod.setCascadeFlowFun)
 };
-
-
+Kui.prototype.MovePop = function () {
+	getjQuery(Kui.FunLaod.setMovePop)
+};
+Kui.prototype.Banner = function () {
+	getjQuery(Kui.FunLaod.setBanner)
+	
+}
 
 
 var Kui = new Kui();
