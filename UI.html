@@ -22,11 +22,12 @@
 <body>
 <div class="bb">
     <div class="banner" style="height: 300px">
-        <ul>
+        <ul class="BigUl">
             <li class="kui-primary">1</li>
             <li class="kui-warning">2</li>
             <li class="kui-danger">3</li>
             <li class="kui-success">4</li>
+            <li class="kui-info">5</li>
         </ul>
     </div>
 
@@ -34,7 +35,10 @@
 
 
 <script type="text/javascript">
-	Kui.Banner()
+	Kui.Banner({
+        bgColor:"kui-danger",
+        bannerTime:3000
+    })
 
 
 </script>

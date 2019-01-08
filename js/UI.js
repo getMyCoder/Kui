@@ -37,6 +37,10 @@ Kui.prototype.Vars = {
 	CascadeF: {
 		size: 4,
 		Mtop: 15
+	},
+	BannerS: {
+		bgColor: "kui-primary",
+		bannerTime:3000
 	}
 };
 Kui.prototype.load = function () {
@@ -350,39 +354,93 @@ Kui.prototype.FunLaod = {
 	},
 	// banner
 	setBanner: function () {
-		var setItemsLi = 0;
-		var setItemsWidth = $(".banner ul li").width();
-		var setItemsZindex = 999;
-		
-		$(".banner ul li").css({"left": setItemsWidth+"px"});
-		$(".banner ul li").eq(setItemsLi).css({"zIndex": setItemsZindex,"left": 0});
-		
-		$(".banner ul li").eq(setItemsLi + 1).css({
-			"left": setItemsWidth + "px"
+		var setItems = {
+			setItemsLi: 0,
+			setItemsWidth: $(".BigUl li").width(),
+			setItemsZindex: 99,
+			itemsLength: $(".BigUl li").length,
+			itemsFirst: 0,
+			itemsSecond: 0,
+			itemsThree: 0,
+			timer: null,
+			Obj: $(".BigUl li"),
+			ObjSmall: $(".SmallUl li")
+		};
+		var bannerBtnLable = '<div class="bannerBtnRight bannerBtn"><img src="img/bannerBtnR.png" alt=""></div><div class="bannerBtnLeft bannerBtn"><img src="img/bannerBtnL.png" alt=""></div>';
+		$(".banner").append("<ul class='SmallUl'></ul>" + bannerBtnLable);
+		$(".bannerBtn").css({"top": ($(".banner").height() - $(".bannerBtn").height()) / 2 + "px"});
+		for (var i = 0; i < setItems.itemsLength; i++) {
+			$(".SmallUl").append("<li></li>")
+		}
+		$(".SmallUl").css({"left": ($(".banner").width() - $(".SmallUl").width()) / 2 + "px"});
+		var SmallObj = $(".SmallUl li");
+		setItems.Obj.css({"left": "0px"});
+		setItems.Obj.eq(setItems.setItemsLi).css({"zIndex": setItems.setItemsZindex, "left": 0});
+		setItems.Obj.eq(setItems.setItemsLi + 1).css({"zIndex": setItems.setItemsZindex, "left": setItems.setItemsWidth + "px"});
+		setItems.Obj.eq(setItems.itemsLength - 1).css({"zIndex": setItems.setItemsZindex, "left": -setItems.setItemsWidth + "px"});
+		SmallObj.eq(setItems.setItemsLi).addClass(Kui.Vars.BannerS.bgColor);
+		SmallObj.eq(setItems.setItemsLi).css({"width": "25px"});
+		setBannerFun();
+		$(".banner").mouseover(function () {
+			clearInterval(setItems.timer);
 		});
-		setInterval(function () {
-			$(".banner ul li").eq(setItemsLi).animate({
-				"left": -setItemsWidth + "px"
-			}, 300);
-			$(".banner ul li").eq(setItemsLi + 1).animate({
-				"left": 0 + "px",
-				"zIndex": setItemsZindex
-			}, 300,function () {
-				$(".banner ul li").eq(setItemsLi).animate({
-					"left": 0 + "px"
-				}, 300);
-			});
-			
-			setItemsLi++;
-			setItemsZindex++;
-			if(setItemsLi==$(".banner ul li").length){
-				setItemsLi=-1;
+		$(".banner").mouseout(function () {
+			setBannerFun();
+		});
+		$(".bannerBtnRight").click(function () {
+			setItems.setItemsLi++;
+			setItems.setItemsZindex++;
+			setBannerMove(true)
+		});
+		$(".bannerBtnLeft").click(function () {
+			setItems.setItemsLi--;
+			if (0 > setItems.setItemsLi) {
+				setItems.setItemsLi = setItems.itemsLength - 1;
 			}
-			
-		}, 2000)
-		
+			setItems.setItemsZindex++;
+			setBannerMove(false)
+		});
+		SmallObj.each(function (index) {
+			$(this).click(function () {
+				setItems.setItemsLi=index;
+				setItems.setItemsZindex++;
+				setBannerMove(true)
+			})
+		});
+		function setBannerFun() {
+			setItems.timer = setInterval(function () {
+				setItems.setItemsLi++;
+				setItems.setItemsZindex++;
+				setBannerMove(true)
+			}, Kui.Vars.BannerS.bannerTime);
+		}
+		function setBannerMove(flage) {
+			if (setItems.setItemsLi == 0) {
+				setItems.itemsFirst = setItems.itemsLength - 1;
+				setItems.itemsSecond = setItems.setItemsLi;
+				setItems.itemsThree = setItems.setItemsLi + 1;
+			} else if (setItems.setItemsLi == (setItems.itemsLength - 1)) {
+				setItems.itemsFirst = setItems.setItemsLi - 1;
+				setItems.itemsSecond = setItems.setItemsLi;
+				setItems.itemsThree = 0;
+				if (flage) {
+					setItems.setItemsLi = -1;
+				}
+			} else {
+				setItems.itemsFirst = setItems.setItemsLi - 1;
+				setItems.itemsSecond = setItems.setItemsLi;
+				setItems.itemsThree = setItems.setItemsLi + 1
+			}
+			setItems.Obj.eq(setItems.itemsFirst).animate({"zIndex": setItems.setItemsZindex, "left": -setItems.setItemsWidth + "px"});
+			setItems.Obj.eq(setItems.itemsSecond).animate({"zIndex": setItems.setItemsZindex, "left": 0});
+			setItems.Obj.eq(setItems.itemsThree).animate({"zIndex": setItems.setItemsZindex, "left": setItems.setItemsWidth + "px"});
+			SmallObj.not(SmallObj.eq(setItems.itemsSecond)).animate({"width": "12px"});
+			SmallObj.eq(setItems.itemsSecond).animate({"width": "25px"});
+			SmallObj.eq(setItems.itemsSecond).addClass(Kui.Vars.BannerS.bgColor).siblings().removeClass(Kui.Vars.BannerS.bgColor)
+		}
 	}
 };
+
 
 // 加载事件
 function getjQuery(getFunction) {
@@ -588,10 +646,13 @@ Kui.prototype.CascadeFlow = function (CFVal) {
 Kui.prototype.MovePop = function () {
 	getjQuery(Kui.FunLaod.setMovePop)
 };
-Kui.prototype.Banner = function () {
-	getjQuery(Kui.FunLaod.setBanner)
-	
-}
+Kui.prototype.Banner = function (BannerVal) {
+	Kui.Vars.BannerS = $.extend({
+		bgColor: "kui-primary",
+		bannerTime:3000
+	}, BannerVal);
+	getjQuery(Kui.FunLaod.setBanner);
+};
 
 
 var Kui = new Kui();
