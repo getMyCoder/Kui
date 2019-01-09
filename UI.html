@@ -11,36 +11,42 @@
     <script type="text/javascript" src="js/UI.js"></script>
     <style type="text/css">
         .bb {
-            border: 1px solid #ccc;
+            /*border: 1px solid #ccc;*/
             /*padding: 50px;*/
             width: 1000px;
             margin: 50px auto;
-            height: 500px;
+            min-height: 500px;
         }
     </style>
+
 </head>
 <body>
 <div class="bb">
-    <div class="banner" style="height: 300px">
-        <ul class="BigUl">
-            <li class="kui-primary">1</li>
-            <li class="kui-warning">2</li>
-            <li class="kui-danger">3</li>
-            <li class="kui-success">4</li>
-            <li class="kui-info">5</li>
-        </ul>
-    </div>
 
+
+    <div class="Trees" id="Trees"></div>
+    </div>
 </div>
 
 
 <script type="text/javascript">
-	Kui.Banner({
-        bgColor:"kui-danger",
-        bannerTime:3000
-    })
-
-
+	var Tree=[
+		{id:1,bId:0,name:"张三1"},
+		{id:2,bId:0,name:"张三2"},
+		{id:3,bId:0,name:"张三3"},
+		{id:4,bId:1,name:"张三21"},
+		{id:5,bId:2,name:"张三22"},
+		{id:6,bId:1,name:"张三23"},
+		{id:7,bId:5,name:"张三431"},
+		{id:8,bId:5,name:"张三432"},
+		{id:9,bId:8,name:"张三8432"},
+		{id:10,bId:6,name:"张三8432ssss"},
+		{id:11,bId:10,name:"张三8432ssssaaaa"},
+		{id:12,bId:11,name:"张三8432ssssbbbb"},
+		{id:13,bId:11,name:"张三8432ssssbbbb"},
+		{id:14,bId:13,name:"张三8432sssscccc"},
+	];
+	Kui.TreeUnit(Tree)
 </script>
 </body>
 </html>
