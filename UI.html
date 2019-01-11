@@ -24,8 +24,8 @@
 <div class="bb">
 
 
-    <div class="Trees" id="Trees"></div>
-    </div>
+    <div class="Trees" id="Trees" style="width: 500px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;"></div>
+
 </div>
 
 
@@ -46,7 +46,12 @@
 		{id:13,bId:11,name:"张三8432ssssbbbb"},
 		{id:14,bId:13,name:"张三8432sssscccc"},
 	];
-	Kui.TreeUnit(Tree)
+	Kui.TreeUnit({
+		TreeVal:Tree,
+		Callback:function () {
+			console.log("this is function");
+		}
+    })
 </script>
 </body>
 </html>

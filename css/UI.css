@@ -819,7 +819,7 @@ h1, h2, h3, h4, h5, h6 {
     
 }
 
-.Trees{width: 300px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;}
+.Trees{}
 .TreeUl0{}
 .TreeUl0 li{padding-left: 15px;cursor: pointer;overflow: hidden;}
 .TreeUl0 li i{width: 11px;height: 11px;display: inline-block;overflow: hidden;margin:9px 10px 0 0;float: left;}

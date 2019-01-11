@@ -42,7 +42,10 @@ Kui.prototype.Vars = {
 		bgColor: "kui-primary",
 		bannerTime: 3000
 	},
-	Tree: {}
+	Tree: {
+		TreeVal: {},
+		Callback: null
+	}
 };
 Kui.prototype.load = function () {
 	$(function () {
@@ -444,7 +447,7 @@ Kui.prototype.FunLaod = {
 	},
 	// Tree
 	setTree: function () {
-		var Tree = Kui.Vars.Tree;
+		var Tree = Kui.Vars.Tree.TreeVal;
 		var itemsLi = 'TreeLi';
 		var itemsUl = 'TreeUl';
 		var levelSize = 0;
@@ -468,8 +471,6 @@ Kui.prototype.FunLaod = {
 			}
 		}
 		$("#Trees li h4").each(function () {
-			
-			
 			if ($(this).attr("select") == "no") {
 				$(this).siblings("ul").find("li").hide();
 				$(this).find("i img").removeClass("ImgActive");
@@ -477,9 +478,13 @@ Kui.prototype.FunLaod = {
 				$(this).siblings("ul").find("li").show();
 				$(this).find("i img").addClass("ImgActive");
 			}
-			
 			if ($(this).siblings().html() == undefined) {
-				$(this).find("i img").remove()
+				$(this).find("i img").remove();
+				$(this).click(function () {
+					if (Kui.Vars.Tree.Callback != null) {
+						Kui.Vars.Tree.Callback()
+					}
+				})
 			}
 			// setAdd(this);
 			$(this).click(function () {
@@ -488,23 +493,14 @@ Kui.prototype.FunLaod = {
 				setAdd($(this))
 			})
 		});
-		
 		function setAdd(Obj) {
-			// if($(Div).attr("select")=="no"){
-			// 	$(Div).attr("select","select");
-			// 	$(Div).siblings("ul").find("li").show();
-			// 	$(Div).find("i img").addClass("ImgActive");
-			//
-			// }else{
-			// 	$(Div).attr("select","no");
-			// 	$(Div).siblings("ul").find("li").hide();
-			// 	$(Div).find("i img").removeClass("ImgActive");
-			// }
 			if (Obj.attr("select") == "no") {
 				Obj.attr("select", "select");
 				Obj.siblings("ul").find("li").show();
 				Obj.find("i img").addClass("ImgActive");
-				Obj.siblings("ul").find("li").find("ul li").hide()
+				Obj.siblings("ul").find("li").find("ul li").hide();
+				Obj.siblings("ul").find("li").find("h4 i img").removeClass("ImgActive");
+				Obj.siblings("ul").find("li").find("h4").attr("select", "no");
 			} else {
 				Obj.attr("select", "no");
 				Obj.siblings("ul").find("li").hide();
@@ -728,7 +724,10 @@ Kui.prototype.Banner = function (BannerVal) {
 	getjQuery(Kui.FunLaod.setBanner);
 };
 Kui.prototype.TreeUnit = function (TreeVal) {
-	Kui.Vars.Tree = TreeVal;
+	Kui.Vars.Tree = $.extend({
+		TreeVal: {},
+		Callback: null
+	}, TreeVal);
 	getjQuery(Kui.FunLaod.setTree);
 };
 
