@@ -1,5 +1,6 @@
 var DW = document.documentElement.clientWidth;
 var DH = document.documentElement.clientHeight;
+
 // 构造函数
 function Kui() {
 	// 样式
@@ -7,6 +8,12 @@ function Kui() {
 };
 // 变量
 Kui.prototype.Vars = {
+	popMsg: {
+		title: "标题",
+		text: "内容",
+		message: "内容",
+		setSubmit: null
+	},
 	popConWidth: 300,
 	popConHeight: 160,
 	TabLi: "",
@@ -543,6 +550,7 @@ Kui.prototype.FunLaod = {
 		var proBodys = DIV.html();
 		DIV.children().remove();
 		setLoad();
+		
 		// 设置加载load的dom
 		function setTime() {
 			timer = setInterval(function () {
@@ -553,13 +561,15 @@ Kui.prototype.FunLaod = {
 				}
 			}, 10)
 		}
+		
 		// 预先加载的dom
 		function setLoad() {
-			if(Summary.loads!=null){
+			if (Summary.loads != null) {
 				Summary.loads()
 			}
 			LoadFlage = true;
 		}
+		
 		// createHTML-->v-for-->loop
 		function setLoop(FSomes) {
 			var FSomess = FSomes.parent(), FSome = FSomes, FLength = 0, FLsize = true;
@@ -641,6 +651,7 @@ Kui.prototype.FunLaod = {
 				}
 			}
 		};
+		
 		// get/set the Label attribute
 		function setAttrR(AttrDiv) {
 			var AttrsVal = {
@@ -660,6 +671,7 @@ Kui.prototype.FunLaod = {
 			}
 			return AttrValS
 		};
+		
 		// set Event
 		function setEvent(Dobj) {
 			var EventS = {
@@ -685,11 +697,13 @@ Kui.prototype.FunLaod = {
 				}
 			}
 		};
+		
 		// RegExp-->html
 		function setReg(stringVal, regVal, endVal) {
 			var reg = new RegExp(regVal, "gim");
 			return stringVal.replace(reg, endVal)
 		};
+		
 		//set-Message-information
 		function setMessage(itemsDiv, itemsDivHtml, selectVal, ide) {
 			var getHtmlV = itemsDiv.html();
@@ -743,12 +757,14 @@ Kui.prototype.FunLaod = {
 		};
 	}
 };
+
 // 加载事件
 function getjQuery(getFunction) {
 	$(function () {
 		getFunction()
 	})
 };
+
 // 失焦事件
 function blurClickEvent(Obj, flage, DEvtX, DEvtY) {
 	if (Obj.length > 0) {
@@ -767,6 +783,7 @@ function blurClickEvent(Obj, flage, DEvtX, DEvtY) {
 		}
 	}
 };
+
 function insertHtmlAtCaret(html) {
 	var sel, range;
 	if (window.getSelection) {
@@ -799,10 +816,11 @@ function insertHtmlAtCaret(html) {
 	}
 };
 Kui.prototype.open = function (valMsg) {
-	var valMsgS = $.extend({
+	Kui.Vars.popMsg = $.extend({
 		title: "标题",
-		text: "",
-		message: "asdf"
+		text: "内容",
+		message: "内容",
+		setSubmit: null
 	}, valMsg);
 	var popLable = '<div class="pop"><div class="popCon"><div class="popMain"><div class="popHead"><i>标题</i><span class="closePop closeSpan">&times;</span></div><div class="popBody">内容</div><div class="popFoot"><span class="popSpan"><button class="kui-btn kui-primary closeSubmit">确定</button></span><span class="popSpan"><button class="kui-btn kui-info closePop">取消</button></span></div></div></div></div>';
 	$("body").append(popLable);
@@ -811,38 +829,39 @@ Kui.prototype.open = function (valMsg) {
 		"top": (DH - $(".popCon").height()) / 2 - 50 + "px",
 		"left": (DW - $(".popCon").width()) / 2 + "px",
 	});
-	$(".openPop").click(function () {
-		$(".popHead i").text(valMsgS.title);
-		if (valMsgS.text != "") {
-			$(".popBody").text(valMsgS.text);
-		} else {
-			$(".popBody").html(valMsgS.message);
-		}
-		$(".pop").show();
-		$(".popMain").hide();
-		$(".popCon").css({
-			"width": "0",
-			"height": "0",
-			"top": DH / 2 - 50 + "px",
-			"left": DW / 2 + "px",
-		});
-		$(".popCon").animate({
-			"width": Kui.Vars.popConWidth,
-			"height": Kui.Vars.popConHeight,
-			"top": (DH - Kui.Vars.popConHeight) / 2 - 50 + "px",
-			"left": (DW - Kui.Vars.popConWidth) / 2 + "px",
-		}, 100, function () {
-			$(".popMain").show();
-		});
+	$(".popHead i").text(Kui.Vars.popMsg.title);
+	if (Kui.Vars.popMsg.text != "") {
+		$(".popBody").text(Kui.Vars.popMsg.text);
+	} else {
+		$(".popBody").html(Kui.Vars.popMsg.message);
+	}
+	$(".pop").show();
+	$(".popMain").hide();
+	$(".popCon").css({
+		"width": "0",
+		"height": "0",
+		"top": DH / 2 - 50 + "px",
+		"left": DW / 2 + "px",
 	});
-	Kui.close()
+	$(".popCon").animate({
+		"width": Kui.Vars.popConWidth,
+		"height": Kui.Vars.popConHeight,
+		"top": (DH - Kui.Vars.popConHeight) / 2 - 50 + "px",
+		"left": (DW - Kui.Vars.popConWidth) / 2 + "px",
+	}, 100, function () {
+		$(".popMain").show();
+	});
+	Kui.close(Kui.Vars.popMsg.setSubmit)
 };
-Kui.prototype.close = function () {
+Kui.prototype.close = function (Scallback) {
 	$(".closePop").click(function () {
 		closeDiv($(".closePop"))
 	});
 	$(".closeSubmit").click(function () {
 		closeDiv($(".closeSubmit"));
+		if (Scallback != null) {
+			Scallback()
+		}
 	})
 };
 function closeDiv() {
@@ -853,7 +872,9 @@ function closeDiv() {
 		"top": DH / 2 - 50 + "px",
 		"left": DW / 2 + "px",
 	}, 100);
-	$(".pop").fadeOut(100);
+	$(".pop").fadeOut(100,function () {
+		$(".pop").remove()
+	});
 };
 Kui.prototype.promptBox = function (valMsg) {
 	var valMsgP = $.extend({
@@ -968,7 +989,7 @@ Kui.prototype.KuiVM = function (KuiVMVal) {
 	Kui.Vars.KuiVMCS = $.extend({
 		id: "",
 		data: {},
-		loads:null,
+		loads: null,
 		method: {}
 	}, KuiVMVal);
 	getjQuery(Kui.FunLaod.setKuiVM);

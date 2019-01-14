@@ -1,0 +1,152 @@
+.kui-col-xs1,
+.kui-col-xs2,
+.kui-col-xs3,
+.kui-col-xs4,
+.kui-col-xs5,
+.kui-col-xs6,
+.kui-col-xs7,
+.kui-col-xs8,
+.kui-col-xs9,
+.kui-col-xs10,
+.kui-col-xs11,
+.kui-col-xs12,
+.kui-col-sm1,
+.kui-col-sm2,
+.kui-col-sm3,
+.kui-col-sm4,
+.kui-col-sm5,
+.kui-col-sm6,
+.kui-col-sm7,
+.kui-col-sm8,
+.kui-col-sm9,
+.kui-col-sm10,
+.kui-col-sm11,
+.kui-col-sm12,
+.kui-col-md1,
+.kui-col-md2,
+.kui-col-md3,
+.kui-col-md4,
+.kui-col-md5,
+.kui-col-md6,
+.kui-col-md7,
+.kui-col-md8,
+.kui-col-md9,
+.kui-col-md10,
+.kui-col-md11,
+.kui-col-md12 {
+  float: left;
+}
+@media (max-width: 768px) {
+  .kui-col-xs1 {
+    width: 8.33333333%;
+  }
+  .kui-col-xs2 {
+    width: 16.66666667%;
+  }
+  .kui-col-xs3 {
+    width: 25%;
+  }
+  .kui-col-xs4 {
+    width: 33.33333333%;
+  }
+  .kui-col-xs5 {
+    width: 41.66666667%;
+  }
+  .kui-col-xs6 {
+    width: 50%;
+  }
+  .kui-col-xs7 {
+    width: 58.33333333%;
+  }
+  .kui-col-xs8 {
+    width: 66.66666667%;
+  }
+  .kui-col-xs9 {
+    width: 75%;
+  }
+  .kui-col-xs10 {
+    width: 83.33333333%;
+  }
+  .kui-col-xs11 {
+    width: 91.66666667%;
+  }
+  .kui-col-xs12 {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .kui-col-sm1 {
+    width: 8.33333333%;
+  }
+  .kui-col-sm2 {
+    width: 16.66666667%;
+  }
+  .kui-col-sm3 {
+    width: 25%;
+  }
+  .kui-col-sm4 {
+    width: 33.33333333%;
+  }
+  .kui-col-sm5 {
+    width: 41.66666667%;
+  }
+  .kui-col-sm6 {
+    width: 50%;
+  }
+  .kui-col-sm7 {
+    width: 58.33333333%;
+  }
+  .kui-col-sm8 {
+    width: 66.66666667%;
+  }
+  .kui-col-sm9 {
+    width: 75%;
+  }
+  .kui-col-sm10 {
+    width: 83.33333333%;
+  }
+  .kui-col-sm11 {
+    width: 91.66666667%;
+  }
+  .kui-col-sm12 {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .kui-col-md1 {
+    width: 8.33333333%;
+  }
+  .kui-col-md2 {
+    width: 16.66666667%;
+  }
+  .kui-col-md3 {
+    width: 25%;
+  }
+  .kui-col-md4 {
+    width: 33.33333333%;
+  }
+  .kui-col-md5 {
+    width: 41.66666667%;
+  }
+  .kui-col-md6 {
+    width: 50%;
+  }
+  .kui-col-md7 {
+    width: 58.33333333%;
+  }
+  .kui-col-md8 {
+    width: 66.66666667%;
+  }
+  .kui-col-md9 {
+    width: 75%;
+  }
+  .kui-col-md10 {
+    width: 83.33333333%;
+  }
+  .kui-col-md11 {
+    width: 91.66666667%;
+  }
+  .kui-col-md12 {
+    width: 100%;
+  }
+}
