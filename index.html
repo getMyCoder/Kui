@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="js/style.css"/>
+    <link rel="stylesheet" type="text/css" href="js/Kui.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/Kui.js"></script>
+</head>
+<body>
+<div class="titleT">
+    <div class="title">
+        <div class="logo">K<i>UI</i></div>
+        <div class="docTitle"><a href="#introduce1">使用说明</a></div>
+        <div class="docTitle"><a href="#css1">css样式</a></div>
+        <div class="docTitle"><a href="#plug1">插件</a></div>
+        <div class="docTitle"><a href="#mvvm1">MVVM框架</a></div>
+    </div>
+</div>
+<div class="left">
+    <div class="leftItems">
+        <h2>使用说明</h2>
+        <ul>
+            <li><a href="#introduce1">介绍</a></li>
+            <li><a href="#introduce2">开始使用</a></li>
+        </ul>
+    </div>
+    <div class="leftItems">
+        <h2>css样式</h2>
+        <ul>
+            <li><a href="#css1">栅格系统</a></li>
+            <li><a href="#css2">背景颜色</a></li>
+            <li><a href="#css3">字体颜色</a></li>
+            <li><a href="#css4">边框颜色</a></li>
+            <li><a href="#css5">圆角</a></li>
+            <li><a href="#css6">按钮</a></li>
+        </ul>
+    </div>
+    <div class="leftItems">
+        <h2>插件</h2>
+        <ul>
+            <li><a href="#plug1">弹窗</a></li>
+            <li><a href="#plug2">提示框</a></li>
+            <li><a href="#plug3">点击动画样式</a></li>
+            <li><a href="#plug4">选项卡</a></li>
+            <li><a href="#plug5">折叠面板</a></li>
+            <li><a href="#plug6">滑块</a></li>
+            <li><a href="#plug7">进度条</a></li>
+            <li><a href="#plug8">分页</a></li>
+            <li><a href="#plug9">表情</a></li>
+            <li><a href="#plug10">瀑布流</a></li>
+            <li><a href="#plug11">可拖动的弹窗</a></li>
+            <li><a href="#plug12">Banner</a></li>
+            <li><a href="#plug13">树插件</a></li>
+            <li><a href="#plug14">滚轴到底部执行事件</a></li>
+        </ul>
+    </div>
+    <div class="leftItems">
+        <h2>MVVM</h2>
+        <ul>
+            <li><a href="#mvvm1">MVVM介绍和使用</a></li>
+            <li><a href="#mvvm2">MVVM循环</a></li>
+            <li><a href="#mvvm3">MVVM事件</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="right">
+        <div class="rightItems">
+            <a name="introduce1" class="linkA"></a>
+            <h2 class="ItemsTitleH2T">介绍</h2>
+            <h2 class="ItemsTitleH2">介绍</h2>
+            <div class="context">
+                <p>Kui依赖于jQuery，插件和MVVM框架都是通过jQuery二次开发，主要目的是为了降低开发量！</p>
+                <p>栅格系统布局、按钮、以及背景的选取和Bootstrap相似</p>
+                <p>对于前端开发，因为大多数做的项目都有效果图，所以对于样式的内容较少，只是稍微写了点样式通用的样式</p>
+                <h3 class="ItemsTitleH3">CSS</h3>
+                <p>css样式中只是写了简单的样式，包括栅格系统、背景、字体颜色、边框颜色、圆角</p>
+                <h3 class="ItemsTitleH3">插件</h3>
+                <p>插件都是依赖于jQuery；一些较为常用的模态框、选项卡、折叠面板、瀑布流、banner等</p>
+                <h3 class="ItemsTitleH3">MVVM</h3>
+                <p>MVVM框架也是依赖于jQuery开发的，通过获取标签的属性进行判断、赋值、循环等（这里的MVVM框架只是做了数据的循环操作和事件操作）</p>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="introduce2" class="linkA"></a>
+            <h2 class="ItemsTitleH2">开始使用</h2>
+            <div class="context">
+                <p>引入css样式&lt;link rel="stylesheet" type="text/css" href="Kui.css"/ &gt;</p>
+                <p>因为依赖于jQuery，需要先将jQuery引入，然后引入&lt;script type="text/javascript" src="Kui.js"&gt;&lt;/script&gt;下面可以直接敲代码了！</p>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="css1" class="linkA"></a>
+            <h2 class="ItemsTitleH2">栅格系统</h2>
+            <div class="context">
+                <p>栅格系统通过通过媒体查询，根据屏幕分辨率的大小进行合理的布局，一般分为手机(&le;768)、平板(&ge;992)、PC(&ge;992)、大屏(&le;1200),此处的大屏幕融合到了pc中</p>
+                <p>此处是按照12个格子进行分割的，里边的样式没有做任何的添加或是调整，只是做了布局处理！</p>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>手机&le;768px</th>
+                            <th>平板&ge;768px</th>
+                            <th>桌面&ge;992px</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>分辨率</td>
+                            <td>&le;768px</td>
+                            <td>&ge;768px</td>
+                            <td>&ge;992px</td>
+                        </tr>
+                        <tr>
+                            <td>对应的类</td>
+                            <td>kui-col-xs</td>
+                            <td>kui-col-sm</td>
+                            <td>kui-col-md</td>
+                        </tr>
+                        <tr>
+                            <td>列数</td>
+                            <td colspan="3">12列</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>引用<br>
+                    &lt;div class="kui-col-md1"&gt;1&lt;/div&gt;<br>
+                    &lt;div class="kui-col-sm1"&gt;1&lt;/div&gt;<br>
+                    &lt;div class="kui-col-xs1"&gt;1&lt;/div&gt;<br>
+                </p>
+                <p>
+                    响应式布局<br>
+                    &lt;div class="kui-col-md6 kui-col-sm4 kui-col-xs2"&gt;PC6、平板4、手机2&lt;/div&gt;<br>
+                </p>
+                <p>注意：此处只是做了整体布局，里边的样式没有做处理，包括内部的左右浮动</p>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="css2" class="linkA"></a>
+            <h2 class="ItemsTitleH2">背景颜色</h2>
+            <div class="context">
+                <p>下面的几种暖色调的颜色</p>
+                <p>类名分别为: kui-success | kui-warning | kui-danger | kui-info | kui-primary</p>
+                <div class="bgColor">
+                    <ul>
+                        <li>
+                            <div class="bgColorT kui-success">#67C23A</div>
+                            <p>kui-success</p>
+                        </li>
+                        <li>
+                            <div class="bgColorT kui-warning">#E6A23C</div>
+                            <p>kui-warning</p>
+                        </li>
+                        <li>
+                            <div class="bgColorT kui-danger">#F56C6C</div>
+                            <p>kui-danger</p>
+                        </li>
+                        <li>
+                            <div class="bgColorT kui-info">#909399</div>
+                            <p>kui-info</p>
+                        </li>
+                        <li>
+                            <div class="bgColorT kui-primary">#409EFF</div>
+                            <p>kui-primary</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="css3" class="linkA"></a>
+            <h2 class="ItemsTitleH2">字体颜色</h2>
+            <div class="context">
+                <p>字体颜色和背景颜色一样</p>
+                <p>类名分别为: kui-success-color | kui-warning-color | kui-danger-color | kui-info-color | kui-primary-color</p>
+                <div class="bgColor">
+                    <ul>
+                        <li>
+                            <div class="bgColorTFont kui-success-color">#67C23A</div>
+                            <p class="kui-success-color">kui-success-color</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-warning-color">#E6A23C</div>
+                            <p class="kui-warning-color">kui-warning-color</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-danger-color">#F56C6C</div>
+                            <p class="kui-danger-color">kui-danger-color</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-info-color">#909399</div>
+                            <p class="kui-info-color">kui-info-color</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-primary-color">#409EFF</div>
+                            <p class="kui-primary-color">kui-primary-color</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="css4" class="linkA"></a>
+            <h2 class="ItemsTitleH2">边框颜色</h2>
+            <div class="context">
+                <p>字体颜色和背景颜色一样</p>
+                <p>类名分别为: kui-success-border | kui-warning-border | kui-danger-border | kui-info-border | kui-primary-border</p>
+                <div class="bgColor">
+                    <ul>
+                        <li>
+                            <div class="bgColorTFont kui-success-color kui-success-border">#67C23A</div>
+                            <p class="kui-success-color">kui-success-border</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-warning-color kui-warning-border">#E6A23C</div>
+                            <p class="kui-warning-color">kui-warning-border</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-danger-color kui-danger-border">#F56C6C</div>
+                            <p class="kui-danger-color">kui-danger-border</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-info-color kui-info-border">#909399</div>
+                            <p class="kui-info-color">kui-info-border</p>
+                        </li>
+                        <li>
+                            <div class="bgColorTFont kui-primary-color kui-primary-border">#409EFF</div>
+                            <p class="kui-primary-color">kui-primary-border</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="css5" class="linkA"></a>
+            <h2 class="ItemsTitleH2">圆角</h2>
+            <div class="context">
+                <p>圆角为1-4和50%</p>
+                <p>类名分别为: kui-border-radius1 | kui-border-radius2 | kui-border-radius3 | kui-border-radius4 | kui-border-radius-c</p>
+                <div class="border-R">
+                    <ul>
+                        <li>
+                            <div class="BorderR kui-border-radius1 kui-primary-border"></div>
+                            <p>kui-border-radius1</p>
+                        </li>
+                        <li>
+                            <div class="BorderR kui-border-radius2 kui-primary-border"></div>
+                            <p>kui-border-radius2</p>
+                        </li>
+                        <li>
+                            <div class="BorderR kui-border-radius3 kui-primary-border"></div>
+                            <p>kui-border-radius3</p>
+                        </li>
+                        <li>
+                            <div class="BorderR kui-border-radius4 kui-primary-border"></div>
+                            <p>kui-border-radius4</p>
+                        </li>
+                        <li>
+                            <div class="BorderR kui-border-radius5 kui-primary-border"></div>
+                            <p>kui-border-radius5</p>
+                        </li>
+                        <li>
+                            <div class="BorderR kui-border-radius-c kui-primary-border"></div>
+                            <p>kui-border-radius-c</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="css6" class="linkA"></a>
+            <h2 class="ItemsTitleH2">按钮</h2>
+            <div class="context">
+                <p>按钮 kui-btn 的样式分为大、中、小，另加一个默认的样式，对于按钮的颜色，是用背景颜色调的！</p>
+                <p>类名分别为: kui-btn-b | kui-btn-m | kui-btn-s</p>
+                <div class="Sbutton">
+                    <button class="kui-btn">按钮</button>
+                    <button class="kui-btn kui-btn-b">按钮</button>
+                    <button class="kui-btn kui-btn-m">按钮</button>
+                    <button class="kui-btn kui-btn-s">按钮</button>
+                </div>
+                <p>可通过修改背景颜色来改变按钮样式</p>
+                <div class="Sbutton">
+                    <button class="kui-btn kui-btn-s kui-success">按钮</button>
+                    <button class="kui-btn kui-btn-m kui-warning">按钮</button>
+                    <button class="kui-btn kui-btn-b kui-danger">按钮</button>
+                    <button class="kui-btn kui-btn-b kui-primary">按钮</button>
+                    <button class="kui-btn kui-btn-b kui-info">按钮</button>
+                </div>
+                <p>
+                    写法为：<br>
+                    &lt;button class="kui-btn kui-btn-s kui-success"&gt;按钮&lt;/button&gt;<br>
+                    &lt;button class="kui-btn kui-btn-m kui-warning"&gt;按钮&lt;/button&gt;<br>
+                    &lt;button class="kui-btn kui-btn-b kui-danger"&gt;按钮&lt;/button&gt;<br>
+                    &lt;button class="kui-btn kui-btn-b kui-primary"&gt;按钮&lt;/button&gt;<br>
+                    &lt;button class="kui-btn kui-btn-b kui-info"&gt;按钮&lt;/button&gt;<br>
+                </p>
+            </div>
+        </div>
+        <!--插件-->
+        <div class="rightItems">
+            <a name="plug1" class="linkA"></a>
+            <h2 class="ItemsTitleH2T">插件</h2>
+            <h2 class="ItemsTitleH2">弹窗</h2>
+            <div class="context">
+                <p>
+                    方法为:<br>
+                    Kui.open({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;title:"标题", //标题<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;text:"内容", //这里是文本内容不能有标签<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;message:"message", //这里可以有标签<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;setSubmit:function () { //提交确定后执行的方法，如果不写则不执行任何方法<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(1);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    });<br>
+                </p>
+                <p>执行方法的对象或是标签添加事件后执行这个方法</p>
+                <p>例如：&lt;button class="kui-btn kui-primary" onclick=Kui.open()&gt;点击我&lt;/button&gt;</p>
+                <div class="emptyDiv">
+                    <button class="kui-btn kui-primary" onclick="Kui.open()">点击我</button>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>title</td>
+                            <td class="textLeft">弹窗的标题</td>
+                        </tr>
+                        <tr>
+                            <td>text</td>
+                            <td class="textLeft">弹窗的提示内容</td>
+                        </tr>
+                        <tr>
+                            <td>message</td>
+                            <td class="textLeft">message和text不能同时存在，message里的内容可以用标签，设置样式</td>
+                        </tr>
+                        <tr>
+                            <td>回调方法callback</td>
+                            <td class="textLeft">提交确定后执行的方法，如果为空值不执行</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug2" class="linkA"></a>
+            <h2 class="ItemsTitleH2">提示框</h2>
+            <div class="context">
+                <p>方法为：<br>
+                    Kui.promptBox({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;TipsMsg:"提交成功", //内容<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;TipsType:"danger" //样式<br>
+                    })<br>
+                </p>
+                <p>执行方法的对象或是标签添加事件后执行这个方法</p>
+                <p>例如：<br>&lt;button class="kui-btn kui-primary" onclick=Kui.promptBox({TipsMsg:'提交成功', TipsType:'danger'})&gt;点击我&lt;/button&gt;</p>
+                <div class="emptyDiv">
+                    <button class="kui-btn kui-primary" onclick="Kui.promptBox({TipsMsg:'提交成功', TipsType:'success'})">点击我</button>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>TipsMsg</td>
+                            <td class="textLeft">提示信息</td>
+                        </tr>
+                        <tr>
+                            <td>TipsType</td>
+                            <td class="textLeft">提示框的背景颜色，包括success、danger、warning、info、primary</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>信息提示框，提示完成后，会自动隐藏</p>
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug3" class="linkA"></a>
+            <h2 class="ItemsTitleH2">点击动画样式</h2>
+            <div class="context">
+                <p>点击的样式分为三种，由小到大、渐变、上下滚动</p>
+                <p>
+                    调用class类名<br>
+                    &lt;div class="kui-anim-scale"&gt;&lt;/div&gt;<br>
+                    &lt;div class="kui-anim-fade"&gt;&lt;/div&gt;<br>
+                    &lt;div class="kui-anim-down"&gt;&lt;/div&gt;<br>
+                </p>
+                <div class="emptyDiv">
+                    <div class="SFS kui-anim-scale kui-primary">由小到大</div>
+                    <div class="SFS kui-anim-fade kui-success">渐变</div>
+                    <div class="SFS kui-anim-down kui-danger">上下滚动</div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug4" class="linkA"></a>
+            <h2 class="ItemsTitleH2">选项卡</h2>
+            <div class="context">
+                <p>标签为：<br>
+                    &lt;div class="kuiTab-header"&gt;&lt;/div&gt;<br>
+                    &lt;div class="kuiTab-body"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; &lt;div class="kuiTab-items"&gt;1&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="kuiTab-items"&gt;2&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="kuiTab-items"&gt;3&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="kuiTab-items"&gt;4&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="kuiTab-items"&gt;5&lt;/div&gt;<br>
+                    &lt;/div&gt;<br>
+                </p>
+                <p>方法为：<br>
+                    Kui.kuiTab(["商品1","商品2","商品3","商品4","商品5"])
+                </p>
+                <p>传入数据要和标签中 kuiTab-items 的个数等同，传入的数据为选项卡的title中的数据</p>
+                <div class="emptyDiv1">
+                    <div class="kuiTab-header"></div>
+                    <div class="kuiTab-body">
+                        <div class="kuiTab-items">商品1</div>
+                        <div class="kuiTab-items">商品2</div>
+                        <div class="kuiTab-items">商品3</div>
+                        <div class="kuiTab-items">商品4</div>
+                        <div class="kuiTab-items">商品5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug5" class="linkA"></a>
+            <h2 class="ItemsTitleH2">折叠面板</h2>
+            <div class="context">
+                <p>标签为：<br>
+                    &lt;div class="panel"&gt;&lt;/div&gt;
+                </p>
+                <p>方法为：<br>
+                    Kui.Panel([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{id:0,title:"标题s",message:"山东省济南市dd"},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{id:1,title:"标题asdf",message:"山东省济南市ss"},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{id:2,title:"标题dfasdf",message:"山东省济南市asd"}<br>
+                    ])<br>
+                </p>
+                <div class="emptyDiv1" style="padding: 15px 0;">
+                    <div class="panel"></div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td class="textLeft">数据的标识</td>
+                        </tr>
+                        <tr>
+                            <td>title</td>
+                            <td class="textLeft">标题</td>
+                        </tr>
+                        <tr>
+                            <td>message</td>
+                            <td class="textLeft">标题对应的内容</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug6" class="linkA"></a>
+            <h2 class="ItemsTitleH2">滑块</h2>
+            <div class="context">
+                <p>调用标签&lt;div class="slider"&gt;&lt;/div&gt;</p>
+                <p>方法：<br>
+                    Kui.Slider({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;SilderPro:"50%", //进程<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;SilderType:"success", //样式<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;calFun:function () { //当大于设置的进程的时候执行的回调方法<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("执行到我了");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    })<br>
+                </p>
+                <div class="emptyDiv1" style="padding: 15px 0;">
+                    <div class="slider"></div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>SilderPro</td>
+                            <td class="textLeft">进程</td>
+                        </tr>
+                        <tr>
+                            <td>SilderType</td>
+                            <td class="textLeft">背景颜色样式</td>
+                        </tr>
+                        <tr>
+                            <td>calFun</td>
+                            <td class="textLeft">当比例大于设置的进程的时候执行的回调方法</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug7" class="linkA"></a>
+            <h2 class="ItemsTitleH2">进度条</h2>
+            <div class="context">
+                <p>调用标签&lt;div class="progress"&gt;&lt;/div&gt;</p>
+                <p>方法：<br>
+                    Kui.Progess("30%","kui-success")
+                </p>
+                <div class="emptyDiv1" style="padding: 15px 0;">
+                    <div class="progress"></div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>第一个参数</td>
+                            <td class="textLeft">百分比</td>
+                        </tr>
+                        <tr>
+                            <td>第二个参数</td>
+                            <td class="textLeft">背景颜色样式</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug8" class="linkA"></a>
+            <h2 class="ItemsTitleH2">分页</h2>
+            <div class="context">
+                <p>调用标签&lt;div class="page"&gt;&lt;/div&gt;</p>
+                <p>方法：<br>
+                    Kui.Page({
+                    &nbsp;&nbsp;&nbsp;&nbsp; pageStart: 1, //开始的页码数<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;pageSum: 15, //总的页码数<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;pageNumber: 7, //为单数<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;pageIndex: function (index) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(index); //点击的第几个<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                    )<br>
+                </p>
+                <div class="emptyDiv1" style="padding: 15px 0;">
+                    <div class="page"></div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>pageStart</td>
+                            <td class="textLeft">打开页面时候的页码数</td>
+                        </tr>
+                        <tr>
+                            <td>pageSum</td>
+                            <td class="textLeft">总的页码数</td>
+                        </tr>
+                        <tr>
+                            <td>pageNumber</td>
+                            <td class="textLeft">中间显示几个，number类型，且为单数</td>
+                        </tr>
+                        <tr>
+                            <td>pageIndex</td>
+                            <td class="textLeft">点击当前页码数执行的回调函数</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug9" class="linkA"></a>
+            <h2 class="ItemsTitleH2">表情</h2>
+            <div class="context">
+                <p>调用标签<br>
+                    &lt;div class="bb"&gt;<br>
+                    &lt;div class="Emoji"&gt;<br>
+                    &lt;div class="EmojiInput" tabindex="0" contenteditable id="EmojiVal"&gt;&lt;/div&gt;<br>
+                    &lt;div class="EmojiLable ovh"&gt;<br>
+                    &lt;div class="EmojiLog float-left"&gt;<br>
+                    &lt;img src="Emoji/title.png" alt=""&gt;<br>
+                    &lt;/div&gt;<br>
+                    &lt;button class="EmojiBtn kui-btn kui-primary float-right"&gt;确定&lt;/button&gt;<br>
+                    &lt;/div&gt;<br>
+                    &lt;div class="EmojiRendering"&gt;<br>
+                    渲染出来的内容<br>
+                    &lt;/div&gt;<br>
+                    &lt;/div&gt;<br>
+                    &lt;/div&gt;<br>
+                </p>
+                <p>方法：<br>
+                    Kui.Emoji({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;style:['png','gif'],<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;png:52,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;gif:77<br>
+                    })<br>
+                </p>
+                <div class="emptyDiv1" style="padding: 15px 0;">
+                    <div class="Emoji">
+                        <div class="EmojiInput" tabindex="0" contenteditable id="EmojiVal"></div>
+                        <div class="EmojiLable ovh">
+                            <div class="EmojiLog float-left">
+                                <img src="Emoji/title.png" alt="">
+                            </div>
+                            <button class="EmojiBtn kui-btn kui-primary float-right">确定</button>
+                        </div>
+                        <div class="EmojiRendering">
+                            <!--渲染出来的内容-->
+                        </div>
+                    </div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>style</td>
+                            <td class="textLeft">传入表情图片的格式</td>
+                        </tr>
+                        <tr>
+                            <td>png</td>
+                            <td class="textLeft">png格式的图片数量</td>
+                        </tr>
+                        <tr>
+                            <td>gif</td>
+                            <td class="textLeft">gif格式的图片数量</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug10" class="linkA"></a>
+            <h2 class="ItemsTitleH2">瀑布流</h2>
+            <div class="context">
+                <p>调用标签<br>
+                    &lt;div class="CascadeFlow"&gt;<br>
+                    &lt;ul&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/1.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/2.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/3.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/4.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/5.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/1.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/2.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/3.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/4.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;li&gt;&lt;img src="img/images/5.jpg" alt=""&gt;&lt;/li&gt;<br>
+                    &lt;/ul&gt;<br>
+                    &lt;/div&gt;<br>
+                </p>
+                <p>方法：<br>
+                    Kui.CascadeFlow({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;size:4, //放几列<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Mtop:15 //距离marginTop<br>
+                    })<br>
+                </p>
+                <div class="emptyDiv1" style="padding: 15px 0;height: 400px;border:1px solid #eee;margin-bottom: 15px;">
+                    <div class="CascadeFlow">
+                        <ul>
+                            <li><img src="../img/images/1.jpg" alt=""></li>
+                            <li><img src="../img/images/2.jpg" alt=""></li>
+                            <li><img src="../img/images/3.jpg" alt=""></li>
+                            <li><img src="../img/images/4.jpg" alt=""></li>
+                            <li><img src="../img/images/5.jpg" alt=""></li>
+                            <li><img src="../img/images/1.jpg" alt=""></li>
+                            <li><img src="../img/images/2.jpg" alt=""></li>
+                            <li><img src="../img/images/3.jpg" alt=""></li>
+                            <li><img src="../img/images/4.jpg" alt=""></li>
+                            <li><img src="../img/images/5.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>size</td>
+                            <td class="textLeft">容器中放几列</td>
+                        </tr>
+                        <tr>
+                            <td>Mtop</td>
+                            <td class="textLeft">图片之间上下的距离</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug11" class="linkA"></a>
+            <h2 class="ItemsTitleH2">可拖动的弹窗</h2>
+            <div class="context">
+                <p>调用标签<br>
+                    &lt;div class="movePop" style="width: 500px;height: 200px;"&gt;<br>
+                    &lt;div class="movePopTitle"&gt;<br>
+                    &lt;h2>标题&lt;/h2&gt;<br>
+                    &lt;span class="closeMovePop">&times;&lt;/span&gt;<br>
+                    &lt;/div&gt;<br>
+                    &lt;div class="movePopCon"&gt;<br>
+                    内容<br>
+                    &lt;/div&gt;<br>
+                    &lt;/div&gt;<br>
+                </p>
+                <p>方法：<br>
+                    Kui.MovePop()<br>
+                </p>
+                <div class="emptyDiv1" style=" height: 40px;">
+                    <button class="kui-btn kui-primary" onclick="Kui.MovePop()">点击我显示可拖动弹窗</button>
+                    <div class="movePop" style="width: 500px;height: 200px;">
+                        <div class="movePopTitle">
+                            <h2>标题</h2>
+                            <span class="closeMovePop">&times;</span>
+                        </div>
+                        <div class="movePopCon">
+                            内容
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug12" class="linkA"></a>
+            <h2 class="ItemsTitleH2">Banner</h2>
+            <div class="context">
+                <p>调用标签<br>
+                    &lt;&lt;div class="banner" style="height: 300px"&gt;<br>
+                    &lt;ul class="BigUl"&gt;<br>
+                    &lt;li class="kui-primary"&gt;1&lt;/li&gt;<br>
+                    &lt;li class="kui-warning"&gt;2&lt;/li&gt;<br>
+                    &lt;li class="kui-danger"&gt;3&lt;/li&gt;<br>
+                    &lt;li class="kui-success"&gt;4&lt;/li&gt;<br>
+                    &lt;li class="kui-info"&gt;5&lt;/li&gt;<br>
+                    &lt;/ul&gt;<br>
+                    &lt;/div&gt;<br>
+                </p>
+                <p>方法：<br>
+                    Kui.Banner({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;bgColor:"kui-danger",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;bannerTime:3000<br>
+                    })<br>
+                </p>
+                <div class="emptyDiv1" style="padding: 0;margin-bottom: 15px;">
+                    <div class="banner" style="height: 300px">
+                        <ul class="BigUl">
+                            <li class="kui-primary">1</li>
+                            <li class="kui-warning">2</li>
+                            <li class="kui-danger">3</li>
+                            <li class="kui-success">4</li>
+                            <li class="kui-info">5</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>bgColor</td>
+                            <td class="textLeft">banner底部的小图标的背景颜色</td>
+                        </tr>
+                        <tr>
+                            <td>bannerTime</td>
+                            <td class="textLeft">当前的banner页停顿的时间</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug13" class="linkA"></a>
+            <h2 class="ItemsTitleH2">树插件</h2>
+            <div class="context">
+                <p>调用标签<br>
+                    &lt;div class="Trees" id="Trees" style="width: 500px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;"&gt;&lt;/div&gt;<br>
+                </p>
+                <p>方法：<br>
+                    var Tree=[<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; {id:1,bId:0,name:"张三1"},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{id:2,bId:0,name:"张三2"}<br>
+                    ];<br>
+                    Kui.TreeUnit({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;TreeVal:Tree, //树插件传入的数据<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; Callback:function () { //点击最底层的标签执行的回调方法<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; console.log("this is function");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                    })<br>
+                </p>
+                <div class="emptyDiv1" style="padding: 0;margin-bottom: 15px;border:1px solid #eee;">
+                    <div class="Trees" id="Trees" style="width: 500px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;"></div>
+                </div>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>TreeVal</td>
+                            <td class="textLeft">json数据</td>
+                        </tr>
+                        <tr>
+                            <td>Callback</td>
+                            <td class="textLeft">点击最底层的标签执行的事件</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="plug14" class="linkA"></a>
+            <h2 class="ItemsTitleH2">滚轴到底部执行事件</h2>
+            <div class="context">
+                <p>方法：<br>
+                    Kui.RollRefresh({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Callback:function () { //滚轴滚到最低端执行的回调方法<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("this is callback");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    })<br>
+                </p>
+                <p>这里只有一个回调函数，当滚动条滚到底部的时候执行方法，一般用于执行ajax的请求，类似于QQ空间、新浪微博的底部！</p>
+            </div>
+        </div>
+        <!--MVVM-->
+        <div class="rightItems">
+            <a name="mvvm1" class="linkA"></a>
+            <h2 class="ItemsTitleH2T">MVVM</h2>
+            <h2 class="ItemsTitleH2">MVVM介绍和使用</h2>
+            <div class="context">
+                <p>该框架依赖于jQuery库，主要是通过DOM更改、添加、循环数据！</p>
+                <p>
+                    标签:<br>
+                    &lt;div id="main" class="main"&gt;&lt;/div&gt;<br>
+                    获取这个标签的id传入方法中
+                </p>
+                <p>方法：<br>
+                    Kui.KuiVM({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;id: "id",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;data: {},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;loads: function () {},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;method: {}<br>
+                    })<br>
+                </p>
+                <p>id:标签的id</p>
+                <p>data:请求的数据，或是静态数据</p>
+                <p>loads:这里是页面的DOm执行之前执行的内容，一般是ajax的请求;这是一个方法。里边直接定义方法的主体！</p>
+                <p>method:这里是DOM加载完毕后执行的事件，这是对象，里边的方法需要以对象的方法定义！</p>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="mvvm2" class="linkA"></a>
+            <h2 class="ItemsTitleH2">MVVM循环</h2>
+            <div class="context">
+                <p class="kui-danger-color">注意：传入id的标签的一级子标签，最好不要做循环！！！</p>
+                <p>
+                    标签:<br>
+                    &lt;div id="main" class="main"&gt;<br>
+                    &lt;span m-for="msgs in arrs"&gt;{{msgs}}&lt;/span&gt;<br>
+                    &lt;/div&gt;<br>
+                </p>
+                <p>方法：<br>
+                    Kui.KuiVM({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;id: "id",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;data: {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrs: ["h", "e", "l", "l", "o", "!"],<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;loads: function () {},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;method: {}<br>
+                    })<br>
+                </p>
+                <p>循环的写法为：m-for,循环的对象为数组或是对象</p>
+                <p>对于循环对象中的某个数据的使用为：{{msgs.name}}、{{msgs.id}}、{{msgs.age}}</p>
+                <p>此处的循环仅仅是一级循环，对数组中的对象的数组循环是不支持的<br>例如：<br>
+                    json:{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;name:['张三','李四','王五'],<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;name:['张三','李四','王五'],<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;name:['张三','李四','王五']<br>
+                    }<br>
+                    不可以直接循环json中的name
+                </p>
+
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="mvvm3" class="linkA"></a>
+            <h2 class="ItemsTitleH2">MVVM事件</h2>
+            <div class="context">
+                <p>标签：<br>
+                    &lt;div id="main" class="main"&gt;<br>
+                    &lt;span m-for="msgs in arrs" :click="setFun()" &gt;{{msgs}}&lt;/span&gt;<br>
+                    &lt;/div&gt;<br>
+                </p>
+                <p>方法：<br>
+                    Kui.KuiVM({<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;id: "id",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;data: {},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;loads: function () {},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;method: {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;setFun:function(Obj){}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    })<br>
+                </p>
+                <p>事件方式: :click=""</p>
+                <p>支持的事件有：<br>
+                    click | mouseenter | mouseover | mouseup | mousedown | mousemove
+                </p>
+                <p>实例：<br>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function () {
+		var DOM = {
+			H: document.documentElement.clientHeight,
+			W: document.documentElement.clientWidth
+		};
+		$(".left").css({
+			"height": DOM.H - $(".titleT").height() + "px",
+			"left": (DOM.W - $(".container").width()) / 2 + "px"
+		})
+	});
+	Kui.kuiTab(["商品1", "商品2", "商品3", "商品4", "商品5"]);
+	Kui.Panel([
+		{id: 0, title: "标题s", message: "山东省济南市dd"},
+		{id: 1, title: "标题asdf", message: "山东省济南市ss"},
+		{id: 2, title: "标题dfasdf", message: "山东省济南市asd"}
+	]);
+	Kui.Slider({
+		SilderPro: "50%",      //进程
+		SilderType: "success"  //样式
+	});
+	Kui.Progess("30%", "kui-success");//进度
+	Kui.Page({
+			pageStart: 1,   //开始是的页码数
+			pageSum: 15,    //总的页码数
+			pageNumber: 7,  //为单数
+			pageIndex: function (index) {
+				console.log(index);  //点击的第几个
+			}
+		}
+	);
+	Kui.Emoji({
+		style: ['png', 'gif'],
+		png: 52,
+		gif: 77
+	});
+	Kui.CascadeFlow({
+		size: 4,  //放几列
+		Mtop: 15  //距离marginTop
+	});
+	Kui.Banner({
+		bgColor: "kui-danger",
+		bannerTime: 3000
+	});
+	var Tree = [
+		{id: 1, bId: 0, name: "张三1"},
+		{id: 2, bId: 0, name: "张三2"},
+		{id: 3, bId: 0, name: "张三3"},
+		{id: 4, bId: 1, name: "张三21"},
+		{id: 5, bId: 2, name: "张三22"},
+		{id: 6, bId: 1, name: "张三23"},
+		{id: 7, bId: 5, name: "张三431"},
+		{id: 8, bId: 5, name: "张三432"},
+		{id: 9, bId: 8, name: "张三8432"},
+		{id: 10, bId: 6, name: "张三8432ssss"},
+		{id: 11, bId: 10, name: "张三8432ssssaaaa"},
+		{id: 12, bId: 11, name: "张三8432ssssbbbb"},
+		{id: 13, bId: 11, name: "张三8432ssssbbbb"},
+		{id: 14, bId: 13, name: "张三8432sssscccc"},
+	];
+	Kui.TreeUnit({
+		TreeVal: Tree,  //树插件传入的数据
+		Callback: function () {    //点击最底层的标签执行的回调方法
+			console.log("this is function");
+		}
+	});
+	Kui.RollRefresh({
+		Callback: function () {   //滚轴滚到最低端执行的回调方法
+			console.log("this is callback");
+		}
+	})
+</script>
+</body>
+</html>

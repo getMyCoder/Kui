@@ -1,0 +1,48 @@
+*{margin: 0;padding: 0;}
+body{margin: 0;padding: 0;font-family: "微软雅黑";}
+ul,ol,li,dl,dt,dd{list-style: none;}
+a{text-decoration: none;}
+img{vertical-align: middle;margin: 0;}
+p,span{font-size: 12px;margin: 0;padding: 0;}
+h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
+.titleT{width: 100%;background: #000;position: fixed;top: 0;left: 0;z-index: 99999;}
+.title{width: 1100px;margin: 0 auto;height: 40px;overflow: hidden;}
+.logo{float: left;margin-right: 45px;font-size: 24px;color: #fff;line-height: 40px; }
+.logo i{font-size: 20px;font-style: normal}
+/*.logo img{width: 50px;margin-top: 10px;}*/
+.docTitle{float: left;color: #fff;font-size: 14px;line-height: 40px;margin: 0 20px;}
+.docTitle a{color: #fff;font-size: 14px;}
+/*#1E9FFF*/
+.container{width: 1100px;margin: 40px auto 0;overflow: hidden;}
+.left{width: 220px;border:dashed #f0f0f0;border-width: 0 1px 0 1px;overflow-x: hidden;overflow-y: auto;position: fixed;top: 40px;left: 0;}
+.right{width: 880px;float: right;}
+.leftItems{width: 100%;}
+.leftItems h2{background: #f0f0f0;padding-left: 15px;font-size: 14px;color: #1E9FFF;font-weight: normal;line-height: 40px;height: 40px;}
+.leftItems ul{width: 100%;overflow: hidden;height: auto; }
+.leftItems ul li{line-height: 32px;border-bottom: 1px solid #f0f0f0;font-size: 12px;padding-left: 20px;border-left: 2px solid #fff;height: 32px;}
+.leftItems ul li:hover{background: #1E9FFF;color: #fff;}
+.leftItems ul li:hover a{color: #fff;}
+.leftItems ul li a{color: #666;display: block;width: 100%;}
+.rightItems{margin: 20px;}
+.ItemsTitleH2{font-size: 16px;color: #409EFF;font-weight: normal}
+.context{font-size: 12px;color: #666;line-height: 26px;margin: 15px 5px; }
+.context p{font-size: 14px;color: #666;line-height: 26px;  margin: 10px 0;background: #f0f0f0;padding: 15px;}
+.ItemsTitleH3{font-size: 14px;color: #666;font-weight: normal; border-left: 2px solid #1E9FFF;padding-left: 10px;margin: 15px 0 5px 0;}
+.bgColor{overflow: hidden;margin: 15px;}
+.bgColor ul{overflow: hidden;}
+.bgColor ul li{float: left;margin: 0 10px;}
+.bgColor ul li p{text-align: center;background: none;margin: 0 !important;padding: 0 !important;line-height: 30px;}
+.bgColorT{width: 140px;height: 80px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;color: #fff;line-height: 80px;text-align: center;float: left;}
+.bgColorTFont{width: 135px;height: 50px;border:1px solid #f0f0f0;text-align: center;line-height: 50px;}
+.border-R{margin: 20px 15px;font-size: 12px}
+.border-R ul{overflow: hidden;}
+.border-R ul li{width: 132px;float: left; text-align: center}
+.border-R ul li p{width: 132px;text-align: center;margin: 0;padding: 0; font-size: 12px;background: none;line-height: 30px;height: 30px !important;}
+.BorderR{width: 100px;height: 100px;margin:0 16px;}
+.Sbutton{width: 100%;line-height: 40px;margin: 15px;height: 40px;}
+.emptyDiv{width: 100%;margin: 15px;overflow: hidden;}
+.SFS{width: 100px;height: 100px;float: left;margin: 0 15px;color: #fff;text-align: center;line-height: 100px;}
+.kuiTab-items{ height: 200px;background: #f0f0f0;}
+.emptyDiv1{width: 100%;}
+.ItemsTitleH2T{text-align: center;line-height: 60px;margin: 20px 0 20px 0;color: #409EFF}
+.linkA{display: block;width: 100%;height: 40px;}
