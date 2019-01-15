@@ -46,3 +46,6 @@ h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
 .emptyDiv1{width: 100%;}
 .ItemsTitleH2T{text-align: center;line-height: 60px;margin: 20px 0 20px 0;color: #409EFF}
 .linkA{display: block;width: 100%;height: 40px;}
+.LeftItemsActive{background: #000;}
+.LeftItemsActive{background: #1E9FFF !important;color: #fff !important;}
+.LeftItemsActive a{color: #fff !important;}

@@ -24,7 +24,7 @@
     <div class="leftItems">
         <h2>使用说明</h2>
         <ul>
-            <li><a href="#introduce1">介绍</a></li>
+            <li class="LeftItemsActive"><a href="#introduce1">介绍</a></li>
             <li><a href="#introduce2">开始使用</a></li>
         </ul>
     </div>
@@ -1003,6 +1003,14 @@
 		$(".left").css({
 			"height": DOM.H - $(".titleT").height() + "px",
 			"left": (DOM.W - $(".container").width()) / 2 + "px"
+		});
+		$(".left .leftItems").each(function (index) {
+            $(this).find("ul li").each(function () {
+                $(this).click(function () {
+					$(".left .leftItems").find("li").removeClass("LeftItemsActive");
+                    $(this).addClass("LeftItemsActive");
+				})
+			})
 		})
 	});
 	Kui.kuiTab(["商品1", "商品2", "商品3", "商品4", "商品5"]);
@@ -1023,8 +1031,7 @@
 			pageIndex: function (index) {
 				console.log(index);  //点击的第几个
 			}
-		}
-	);
+		});
 	Kui.Emoji({
 		style: ['png', 'gif'],
 		png: 52,
