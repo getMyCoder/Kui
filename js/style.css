@@ -7,14 +7,14 @@ p,span{font-size: 12px;margin: 0;padding: 0;}
 h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
 .titleT{width: 100%;background: #000;position: fixed;top: 0;left: 0;z-index: 99999;}
 .title{width: 1100px;margin: 0 auto;height: 40px;overflow: hidden;}
-.logo{float: left;margin-right: 45px;font-size: 24px;color: #fff;line-height: 40px; }
+.logo{float: left;margin-right: 45px;font-size: 24px;color: #fff;line-height: 40px; margin-left: 15px;}
 .logo i{font-size: 20px;font-style: normal}
 /*.logo img{width: 50px;margin-top: 10px;}*/
 .docTitle{float: left;color: #fff;font-size: 14px;line-height: 40px;margin: 0 20px;}
 .docTitle a{color: #fff;font-size: 14px;}
 /*#1E9FFF*/
 .container{width: 1100px;margin: 40px auto 0;overflow: hidden;}
-.left{width: 220px;border:dashed #f0f0f0;border-width: 0 1px 0 1px;overflow-x: hidden;overflow-y: auto;position: fixed;top: 40px;left: 0;}
+.left{width: 220px;border:dashed #f0f0f0;border-width: 0 1px 0 1px;overflow-x: hidden;overflow-y: auto;position: fixed;top: 40px;left: 0;background: #fff;z-index: 9999;}
 .right{width: 880px;float: right;}
 .leftItems{width: 100%;}
 .leftItems h2{background: #f0f0f0;padding-left: 15px;font-size: 14px;color: #1E9FFF;font-weight: normal;line-height: 40px;height: 40px;}
@@ -49,3 +49,12 @@ h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
 .LeftItemsActive{background: #000;}
 .LeftItemsActive{background: #1E9FFF !important;color: #fff !important;}
 .LeftItemsActive a{color: #fff !important;}
+.floatNone{float: none !important;margin: 0 auto !important;width: 100% !important;}
+.autoContainer{width: 96% !important;}
+.button{width: 50px;height: 50px;background: rgba(0,0,0,0.8);position: fixed;left: 0;top: 45%;z-index: 99999;text-align: center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;overflow: hidden;cursor: pointer;display: none;}
+.button img{width: 20px;margin-top: 15px;}
+.btnRot{transform: rotate(180deg);}
+@media (max-width: 768px){
+    .docTitle{display: none;}
+}
+
