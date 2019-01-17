@@ -865,6 +865,14 @@
                     &nbsp;&nbsp;&nbsp;&nbsp; }<br>
                     })<br>
                 </p>
+                <p>
+                    数据的传递注意事项：id是数据的id,后边的bId是当前的数据是哪个id下的数据，<br>
+                    例如：<br>
+                    var Tree=[<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; {id:1,bId:0,name:"张三1"},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{id:2,bId:1,name:"张三2"}//这条数据的父级是id=1的那条数据下的！<br>
+                    ];<br>
+                </p>
                 <div class="emptyDiv1" style="padding: 0;margin-bottom: 15px;border:1px solid #eee;">
                     <div class="Trees" id="Trees" style="width: 500px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;"></div>
                 </div>
