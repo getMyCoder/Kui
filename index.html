@@ -19,6 +19,7 @@
         <div class="docTitle"><a href="#css1">css样式</a></div>
         <div class="docTitle"><a href="#plug1">插件</a></div>
         <div class="docTitle"><a href="#mvvm1">MVVM框架</a></div>
+        <div class="docTitle"><a href="#fun1">方法FUNCTION</a></div>
     </div>
 </div>
 <div class="left">
@@ -65,6 +66,14 @@
             <li><a href="#mvvm1">MVVM介绍和使用</a></li>
             <li><a href="#mvvm2">MVVM循环</a></li>
             <li><a href="#mvvm3">MVVM事件</a></li>
+        </ul>
+    </div>
+    <div class="leftItems">
+        <h2>方法FUNCTION</h2>
+        <ul>
+            <li><a href="#fun1">数组排序</a></li>
+            <li><a href="#fun2">数据中的json排序</a></li>
+            <li><a href="#fun3">数组添加、删除</a></li>
         </ul>
     </div>
 </div>
@@ -997,9 +1006,187 @@
                 <p>支持的事件有：<br>
                     click | mouseenter | mouseover | mouseup | mousedown | mousemove
                 </p>
-                <p>实例：<br>
-
+            </div>
+        </div>
+        <!--方法FUNCTION-->
+        <div class="rightItems">
+            <a name="fun1" class="linkA"></a>
+            <h2 class="ItemsTitleH2T">方法FUNCTION</h2>
+            <h2 class="ItemsTitleH2">数组排序</h2>
+            <div class="context">
+                <p>数组排序：</p>
+                <pre style="background: #f0f0f0;padding: 15px 0;">
+                方法:
+                function sortArray(ArrayVal, flage) {
+                    var sortArr = {
+                        items: 0,
+                        itemsVal: 0,
+                        changeVal: 0,
+                        newFlage: new Boolean()
+                    };
+                    for (var i = 0; i < ArrayVal.length; i++) {
+                        sortArr.itemsVal = ArrayVal[i];
+                        sortArr.items = i;
+                        for (var j = i; j < ArrayVal.length; j++) {
+                            sortArr.newFlage = (!flage) ? (sortArr.itemsVal > ArrayVal[j]) : (sortArr.itemsVal < ArrayVal[j]);
+                            if (sortArr.newFlage) {
+                                sortArr.itemsVal = ArrayVal[j];
+                                sortArr.items = j;
+                            }
+                        }
+                        sortArr.changeVal = ArrayVal[i];
+                        ArrayVal[i] = sortArr.itemsVal;
+                        ArrayVal[sortArr.items] = sortArr.changeVal;
+                    }
+                    return ArrayVal;
+                }
+                </pre>
+                <p>该方法会把数组排序后的数组返回出来！</p>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>ArrayVal</td>
+                            <td class="textLeft">传入的数组</td>
+                        </tr>
+                        <tr>
+                            <td>flage</td>
+                            <td class="textLeft">Boolean值，false为正序，true为倒序，默认为false</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="fun2" class="linkA"></a>
+            <h2 class="ItemsTitleH2">数据中的json排序</h2>
+            <div class="context">
+                <p>数组中的json按照id或是其他的参数进行排序：</p>
+ <pre style="background: #f0f0f0;padding: 15px 0;">
+ 方法:
+ function sortArrayJson(ArrayJsonVal, Indexes, flage) {
+    var sortArr = {
+        items: 0,
+        itemsVal: 0,
+        changeVal: 0,
+        itemsJson: null,
+        newFlage: new Boolean()
+    };
+    for (var i = 0; i < ArrayJsonVal.length; i++) {
+        sortArr.itemsVal = ArrayJsonVal[i][Indexes];
+        sortArr.items = i;
+        for (var j = i; j < ArrayJsonVal.length; j++) {
+            sortArr.newFlage = (!flage) ? (sortArr.itemsVal > ArrayJsonVal[j][Indexes]) : (sortArr.itemsVal < ArrayJsonVal[j][Indexes]);
+            if (sortArr.newFlage) {
+                sortArr.itemsVal = ArrayJsonVal[j][Indexes];
+                sortArr.items = j;
+                sortArr.itemsJson = ArrayJsonVal[j];
+            }
+        }
+        sortArr.changeVal = ArrayJsonVal[i];
+        ArrayJsonVal[i] = sortArr.itemsJson;
+        ArrayJsonVal[sortArr.items] = sortArr.changeVal;
+    }
+    return ArrayJsonVal;
+ }
+</pre>
+                <p>该方法排序的对象是数组中的元素全部为json，按照json中的元素Indexes进行排序</p>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th>参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>ArrayJsonVal</td>
+                            <td class="textLeft">传入的数组</td>
+                        </tr>
+                        <tr>
+                            <td>Indexes</td>
+                            <td class="textLeft">按照数组元素为json的，json中的某一个元素进行排序</td>
+                        </tr>
+                        <tr>
+                            <td>flage</td>
+                            <td class="textLeft">Boolean值，false为正序，true为倒序，默认为false</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <pre style="background: #f0f0f0;padding: 15px 0;margin-top: 15px;">
+                    例如：
+                    var Arr = [
+                        {id: 7, name: 'asdf7'},
+                        {id: 1, name: 'asdf1'},
+                        {id: 5, name: 'asdf5'},
+                        {id: 2, name: 'asdf2'},
+                        {id: 3, name: 'asdf3'},
+                        {id: 6, name: 'asdf6'},
+                        {id: 0, name: 'asdf0'},
+                        {id: 22, name: 'asdf22'},
+                        {id: 88, name: 'asdf88'},
+                        {id: 4, name: 'asdf4'}
+                    ];
+                </pre>
+                <p>以上数组按照id进行排序<br>
+                    sortArrayJson(Arr,"id")
                 </p>
+
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="fun3" class="linkA"></a>
+            <h2 class="ItemsTitleH2">数组添加、删除</h2>
+            <div class="context">
+                <p>数组排序：</p>
+                <pre style="background: #f0f0f0;padding: 15px 0;">
+                方法:
+                 function AddRemoveArray(ArrayVal, AddArray, flage) {
+                    if (!flage) {
+                        ArrayVal.push(AddArray);
+                        return ArrayVal
+                    } else {
+                        if (ArrayVal.indexOf(AddArray) != -1) {
+                            ArrayVal.splice(ArrayVal.indexOf(AddArray), 1);
+                            return ArrayVal
+                        }
+                    }
+                }
+                </pre>
+                <p>该方法是对数组的元素进行添加或是删除操作！</p>
+                <div class="table">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
+                        <thead>
+                        <tr>
+                            <th width="200">参数</th>
+                            <th>值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>ArrayVal</td>
+                            <td class="textLeft">传入的数组</td>
+                        </tr>
+                        <tr>
+                            <td>AddArray</td>
+                            <td class="textLeft">传入的元素</td>
+                        </tr>
+                        <tr>
+                            <td>flage</td>
+                            <td class="textLeft">Boolean值，false添加，为把AddArray元素添加进数组，true删除，把AddArray元素从数组中删掉，如果数组中不存在AddArray，则不进行任何操作！</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -1048,20 +1235,20 @@
 			if (flage == true) {
 				$(".button").removeClass("btnRot")
 				$(".left").animate({
-					"left":"-220px"
-				},function () {
+					"left": "-220px"
+				}, function () {
 					$(".left").hide();
 					flage = false;
 				});
 			} else {
 				$(".left").show();
 				$(".left").css({
-					"left":"-220px"
+					"left": "-220px"
 				});
 				$(".button").addClass("btnRot")
 				$(".left").animate({
-                    "left":0
-                },function () {
+					"left": 0
+				}, function () {
 					flage = true;
 				});
 			}
