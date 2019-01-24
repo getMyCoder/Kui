@@ -387,7 +387,7 @@ Kui.prototype.FunLaod = {
 		$(document).mouseup(function () {
 			$(document).unbind("mousemove")
 		});
-		$(".movePopTitle").find(".closeMovePop").click(function () {
+		$(".closeMovePop").click(function () {
 			$(".movePop").hide()
 		})
 	},
