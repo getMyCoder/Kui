@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kui</title>
     <link rel="stylesheet" type="text/css" href="js/style.css"/>
     <link rel="stylesheet" type="text/css" href="js/Kui.css"/>
-
 </head>
 <body>
-<div class="button" select="no"><img src="img/button.png" alt=""></div>
 <div class="titleT">
     <div class="title">
         <div class="logo">K<i>UI</i></div>
@@ -19,6 +18,7 @@
         <div class="docTitle"><a href="#plug1">插件</a></div>
         <div class="docTitle"><a href="#mvvm1">MVVM框架</a></div>
         <div class="docTitle"><a href="#fun1">方法FUNCTION</a></div>
+        <div class="docTitleImg"><img src="img/button.png" alt=""></div>
     </div>
 </div>
 <div class="left">
@@ -92,7 +92,8 @@
                 <p>插件都是依赖于jQuery；一些较为常用的模态框、选项卡、折叠面板、瀑布流、banner等</p>
                 <h3 class="ItemsTitleH3">MVVM</h3>
                 <p>MVVM框架也是依赖于jQuery开发的，通过获取标签的属性进行判断、赋值、循环等（这里的MVVM框架只是做了数据的循环操作和事件操作）</p>
-                <p>文件下载地址<a href="https://github.com/getMyCoder/KuiZip" style="color: #1E9FFF;padding-left: 5px;">https://github.com/getMyCoder/KuiZip</a></p>
+                <p>文件下载地址<a href="https://github.com/getMyCoder/KuiZip" style="color: #1E9FFF;padding-left: 5px;">https://github.com/getMyCoder/KuiZip</a>
+                </p>
             </div>
         </div>
         <div class="rightItems">
@@ -188,7 +189,8 @@
             <h2 class="ItemsTitleH2">字体颜色</h2>
             <div class="context">
                 <p>字体颜色和背景颜色一样</p>
-                <p>类名分别为: kui-success-color | kui-warning-color | kui-danger-color | kui-info-color | kui-primary-color</p>
+                <p>类名分别为: kui-success-color | kui-warning-color | kui-danger-color | kui-info-color |
+                    kui-primary-color</p>
                 <div class="bgColor">
                     <ul>
                         <li>
@@ -220,7 +222,8 @@
             <h2 class="ItemsTitleH2">边框颜色</h2>
             <div class="context">
                 <p>字体颜色和背景颜色一样</p>
-                <p>类名分别为: kui-success-border | kui-warning-border | kui-danger-border | kui-info-border | kui-primary-border</p>
+                <p>类名分别为: kui-success-border | kui-warning-border | kui-danger-border | kui-info-border |
+                    kui-primary-border</p>
                 <div class="bgColor">
                     <ul>
                         <li>
@@ -252,7 +255,8 @@
             <h2 class="ItemsTitleH2">圆角</h2>
             <div class="context">
                 <p>圆角为1-4和50%</p>
-                <p>类名分别为: kui-border-radius1 | kui-border-radius2 | kui-border-radius3 | kui-border-radius4 | kui-border-radius-c</p>
+                <p>类名分别为: kui-border-radius1 | kui-border-radius2 | kui-border-radius3 | kui-border-radius4 |
+                    kui-border-radius-c</p>
                 <div class="border-R">
                     <ul>
                         <li>
@@ -378,9 +382,12 @@
                     })<br>
                 </p>
                 <p>执行方法的对象或是标签添加事件后执行这个方法</p>
-                <p>例如：<br>&lt;button class="kui-btn kui-primary" onclick=Kui.promptBox({TipsMsg:'提交成功', TipsType:'danger'})&gt;点击我&lt;/button&gt;</p>
+                <p>例如：<br>&lt;button class="kui-btn kui-primary" onclick=Kui.promptBox({TipsMsg:'提交成功',
+                    TipsType:'danger'})&gt;点击我&lt;/button&gt;</p>
                 <div class="emptyDiv">
-                    <button class="kui-btn kui-primary" onclick="Kui.promptBox({TipsMsg:'提交成功', TipsType:'success'})">点击我</button>
+                    <button class="kui-btn kui-primary" onclick="Kui.promptBox({TipsMsg:'提交成功', TipsType:'success'})">
+                        点击我
+                    </button>
                 </div>
                 <div class="table">
                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
@@ -860,7 +867,8 @@
             <h2 class="ItemsTitleH2">树插件</h2>
             <div class="context">
                 <p>调用标签<br>
-                    &lt;div class="Trees" id="Trees" style="width: 500px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;"&gt;&lt;/div&gt;<br>
+                    &lt;div class="Trees" id="Trees" style="width: 500px;border:1px solid #ccc;min-height: 500px;margin:
+                    0 auto;background: #f9f9f9;"&gt;&lt;/div&gt;<br>
                 </p>
                 <p>方法：<br>
                     var Tree=[<br>
@@ -883,7 +891,8 @@
                     ];<br>
                 </p>
                 <div class="emptyDiv1" style="padding: 0;margin-bottom: 15px;border:1px solid #eee;">
-                    <div class="Trees" id="Trees" style="width: 500px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;"></div>
+                    <div class="Trees" id="Trees"
+                         style="width: 500px;border:1px solid #ccc;min-height: 500px;margin: 0 auto;background: #f9f9f9;"></div>
                 </div>
                 <div class="table">
                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="kuiTable">
@@ -1068,7 +1077,7 @@
             <h2 class="ItemsTitleH2">数据中的json排序</h2>
             <div class="context">
                 <p>数组中的json按照id或是其他的参数进行排序：</p>
- <pre style="background: #f0f0f0;padding: 15px 0;">
+                <pre style="background: #f0f0f0;padding: 15px 0;">
  方法:
  function sortArrayJson(ArrayJsonVal, Indexes, flage) {
     var sortArr = {
@@ -1181,7 +1190,9 @@
                         </tr>
                         <tr>
                             <td>flage</td>
-                            <td class="textLeft">Boolean值，false添加，为把AddArray元素添加进数组，true删除，把AddArray元素从数组中删掉，如果数组中不存在AddArray，则不进行任何操作！</td>
+                            <td class="textLeft">
+                                Boolean值，false添加，为把AddArray元素添加进数组，true删除，把AddArray元素从数组中删掉，如果数组中不存在AddArray，则不进行任何操作！
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -1193,138 +1204,105 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/Kui.js"></script>
 <script type="text/javascript">
-	function setLayout() {
-		var DOM = {
-			H: document.documentElement.clientHeight,
-			W: document.documentElement.clientWidth
-		};
-		$(".left").css({
-			"height": DOM.H - $(".titleT").height() + "px",
-			"left": (DOM.W - $(".container").width()) / 2 + "px"
-		});
-		$(".left .leftItems").each(function (index) {
-			$(this).find("ul li").each(function () {
-				$(this).click(function () {
-					$(".left .leftItems").find("li").removeClass("LeftItemsActive");
-					$(this).addClass("LeftItemsActive");
-				})
-			})
-		});
-		var flage = true;
-		if (DOM.W < 1100) {
-			$(".right").addClass("floatNone");
-			$(".container").addClass("autoContainer");
-			$(".button").attr("select", "select");
-			flage = false;
-		} else {
-			$(".right").removeClass("floatNone");
-			$(".container").removeClass("autoContainer");
-			$(".button").attr("select", "no");
-			flage = true;
-		}
-		if ($(".button").attr("select") == "select") {
-			$(".button").show();
-		} else {
-			$(".button").hide();
-		}
-		if (flage) {
-			$(".left").show();
-		} else {
-			$(".left").hide();
-		}
-		$(".button").click(function () {
-			if (flage == true) {
-				$(".button").removeClass("btnRot")
-				$(".left").animate({
-					"left": "-220px"
-				}, function () {
-					$(".left").hide();
-					flage = false;
-				});
-			} else {
-				$(".left").show();
-				$(".left").css({
-					"left": "-220px"
-				});
-				$(".button").addClass("btnRot")
-				$(".left").animate({
-					"left": 0
-				}, function () {
-					flage = true;
-				});
-			}
-		})
-	}
-
-	$(function () {
-		setLayout();
-		$(window).resize(function () {
-			setLayout();
-			Kui.CascadeFlow({
-				size: 4,  //放几列
-				Mtop: 15  //距离marginTop
-			});
-		})
-	});
-	Kui.kuiTab(["商品1", "商品2", "商品3", "商品4", "商品5"]);
-	Kui.Panel([
-		{id: 0, title: "标题s", message: "山东省济南市dd"},
-		{id: 1, title: "标题asdf", message: "山东省济南市ss"},
-		{id: 2, title: "标题dfasdf", message: "山东省济南市asd"}
-	]);
-	Kui.Slider({
-		SilderPro: "50%",      //进程
-		SilderType: "success"  //样式
-	});
-	Kui.Progess("30%", "kui-success");//进度
-	Kui.Page({
-		pageStart: 1,   //开始是的页码数
-		pageSum: 15,    //总的页码数
-		pageNumber: 7,  //为单数
-		pageIndex: function (index) {
-			console.log(index);  //点击的第几个
-		}
-	});
-	Kui.Emoji({
-		style: ['png', 'gif'],
-		png: 52,
-		gif: 77
-	});
-	Kui.CascadeFlow({
-		size: 4,  //放几列
-		Mtop: 15  //距离marginTop
-	});
-	Kui.Banner({
-		bgColor: "kui-danger",
-		bannerTime: 3000
-	});
-	var Tree = [
-		{id: 1, bId: 0, name: "张三1"},
-		{id: 2, bId: 0, name: "张三2"},
-		{id: 3, bId: 0, name: "张三3"},
-		{id: 4, bId: 1, name: "张三21"},
-		{id: 5, bId: 2, name: "张三22"},
-		{id: 6, bId: 1, name: "张三23"},
-		{id: 7, bId: 5, name: "张三431"},
-		{id: 8, bId: 5, name: "张三432"},
-		{id: 9, bId: 8, name: "张三8432"},
-		{id: 10, bId: 6, name: "张三8432ssss"},
-		{id: 11, bId: 10, name: "张三8432ssssaaaa"},
-		{id: 12, bId: 11, name: "张三8432ssssbbbb"},
-		{id: 13, bId: 11, name: "张三8432ssssbbbb"},
-		{id: 14, bId: 13, name: "张三8432sssscccc"},
-	];
-	Kui.TreeUnit({
-		TreeVal: Tree,  //树插件传入的数据
-		Callback: function () {    //点击最底层的标签执行的回调方法
-			console.log("this is function");
-		}
-	});
-	Kui.RollRefresh({
-		Callback: function () {   //滚轴滚到最低端执行的回调方法
-			console.log("this is callback");
-		}
-	})
+    function setLayout() {
+        var DOM = {
+            H: document.documentElement.clientHeight,
+            W: document.documentElement.clientWidth
+        };
+        if(document.documentElement.clientWidth>1100){
+            $(".left").css({
+                "left": $(".container").offset().left + "px"
+            });
+        }
+        $(".left").css({
+            "height": DOM.H - $(".titleT").height() + "px"
+        });
+    }
+    $(function () {
+        if(document.documentElement.clientWidth<1100){
+            $(".docTitleImg").click(function () {
+                $(".left").slideToggle(100);
+            })
+        }
+        $(".left .leftItems").each(function (index) {
+            $(this).find("ul li").each(function () {
+                $(this).click(function () {
+                    $(".left .leftItems").find("li").removeClass("LeftItemsActive");
+                    $(this).addClass("LeftItemsActive");
+                    if(document.documentElement.clientWidth<1100){
+                        $(".left").slideUp(100)
+                    }
+                })
+            })
+        });
+        setLayout();
+        $(window).resize(function () {
+            setLayout();
+            Kui.CascadeFlow({
+                size: 4,  //放几列
+                Mtop: 15  //距离marginTop
+            });
+        })
+    });
+    Kui.kuiTab(["商品1", "商品2", "商品3", "商品4", "商品5"]);
+    Kui.Panel([
+        {id: 0, title: "标题s", message: "山东省济南市dd"},
+        {id: 1, title: "标题asdf", message: "山东省济南市ss"},
+        {id: 2, title: "标题dfasdf", message: "山东省济南市asd"}
+    ]);
+    Kui.Slider({
+        SilderPro: "50%",      //进程
+        SilderType: "success"  //样式
+    });
+    Kui.Progess("30%", "kui-success");//进度
+    Kui.Page({
+        pageStart: 1,   //开始是的页码数
+        pageSum: 15,    //总的页码数
+        pageNumber: 7,  //为单数
+        pageIndex: function (index) {
+            console.log(index);  //点击的第几个
+        }
+    });
+    Kui.Emoji({
+        style: ['png', 'gif'],
+        png: 52,
+        gif: 77
+    });
+    Kui.CascadeFlow({
+        size: 4,  //放几列
+        Mtop: 15  //距离marginTop
+    });
+    Kui.Banner({
+        bgColor: "kui-danger",
+        bannerTime: 3000
+    });
+    var Tree = [
+        {id: 1, bId: 0, name: "张三1"},
+        {id: 2, bId: 0, name: "张三2"},
+        {id: 3, bId: 0, name: "张三3"},
+        {id: 4, bId: 1, name: "张三21"},
+        {id: 5, bId: 2, name: "张三22"},
+        {id: 6, bId: 1, name: "张三23"},
+        {id: 7, bId: 5, name: "张三431"},
+        {id: 8, bId: 5, name: "张三432"},
+        {id: 9, bId: 8, name: "张三8432"},
+        {id: 10, bId: 6, name: "张三8432ssss"},
+        {id: 11, bId: 10, name: "张三8432ssssaaaa"},
+        {id: 12, bId: 11, name: "张三8432ssssbbbb"},
+        {id: 13, bId: 11, name: "张三8432ssssbbbb"},
+        {id: 14, bId: 13, name: "张三8432sssscccc"},
+    ];
+    Kui.TreeUnit({
+        TreeVal: Tree,  //树插件传入的数据
+        Callback: function () {    //点击最底层的标签执行的回调方法
+            console.log("this is function");
+        }
+    });
+    Kui.RollRefresh({
+        Callback: function () {   //滚轴滚到最低端执行的回调方法
+            console.log("this is callback");
+        }
+    })
 </script>
 </body>
 </html>
