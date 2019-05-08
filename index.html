@@ -15,6 +15,7 @@
         <div class="logo">K<i>UI</i></div>
         <div class="docTitle"><a href="#introduce1">使用说明</a></div>
         <div class="docTitle"><a href="#css1">css样式</a></div>
+        <div class="docTitle"><a href="#webIn1">页面交互</a></div>
         <div class="docTitle"><a href="#plug1">插件</a></div>
         <div class="docTitle"><a href="#mvvm1">MVVM框架</a></div>
         <div class="docTitle"><a href="#fun1">方法FUNCTION</a></div>
@@ -38,6 +39,12 @@
             <li><a href="#css4">边框颜色</a></li>
             <li><a href="#css5">圆角</a></li>
             <li><a href="#css6">按钮</a></li>
+        </ul>
+    </div>
+    <div class="leftItems">
+        <h2>页面交互</h2>
+        <ul>
+            <li><a href="#webIn1">拖动排序</a></li>
         </ul>
     </div>
     <div class="leftItems">
@@ -315,6 +322,27 @@
                     &lt;button class="kui-btn kui-btn-b kui-primary"&gt;按钮&lt;/button&gt;<br>
                     &lt;button class="kui-btn kui-btn-b kui-info"&gt;按钮&lt;/button&gt;<br>
                 </p>
+            </div>
+        </div>
+        <!--页面交互-->
+        <div class="rightItems">
+            <a name="webIn1" class="linkA"></a>
+            <h2 class="ItemsTitleH2T">页面交互</h2>
+            <h2 class="ItemsTitleH2" style="margin: 15px 0;">页面交互和插件是分开的，但也是用的jQuery库！</h2>
+            <h2 class="ItemsTitleH2">拖动排序</h2>
+            <div class="context">
+                <div class="moveDiv">
+                    <h2>1</h2>
+                    <h2>2</h2>
+                    <h2>3</h2>
+                    <h2>4</h2>
+                    <h2>5</h2>
+                    <h2>6</h2>
+                    <h2>7</h2>
+                    <h2>8</h2>
+                    <h2>9</h2>
+                    <h2>10</h2>
+                </div>
             </div>
         </div>
         <!--插件-->
@@ -1209,7 +1237,7 @@
             H: document.documentElement.clientHeight,
             W: document.documentElement.clientWidth
         };
-        if(document.documentElement.clientWidth>1100){
+        if (document.documentElement.clientWidth > 1100) {
             $(".left").css({
                 "left": $(".container").offset().left + "px"
             });
@@ -1218,8 +1246,9 @@
             "height": DOM.H - $(".titleT").height() + "px"
         });
     }
+
     $(function () {
-        if(document.documentElement.clientWidth<1100){
+        if (document.documentElement.clientWidth < 1100) {
             $(".docTitleImg").click(function () {
                 $(".left").slideToggle(100);
             })
@@ -1229,7 +1258,7 @@
                 $(this).click(function () {
                     $(".left .leftItems").find("li").removeClass("LeftItemsActive");
                     $(this).addClass("LeftItemsActive");
-                    if(document.documentElement.clientWidth<1100){
+                    if (document.documentElement.clientWidth < 1100) {
                         $(".left").slideUp(100)
                     }
                 })
@@ -1242,7 +1271,17 @@
                 size: 4,  //放几列
                 Mtop: 15  //距离marginTop
             });
-        })
+        });
+        MoveLable({
+            parent: $(".moveDiv"),//父级层
+            children: $(".moveDiv h2"),//循环层
+            items: 3,//一行放置的个数
+            itemsW: 15,//左右的margin边距
+            itemsH: 15,//上下的margin边距
+            lable: 'h2'
+        }, function (index, newindex) {
+            console.log(index, newindex);
+        });
     });
     Kui.kuiTab(["商品1", "商品2", "商品3", "商品4", "商品5"]);
     Kui.Panel([
@@ -1302,7 +1341,144 @@
         Callback: function () {   //滚轴滚到最低端执行的回调方法
             console.log("this is callback");
         }
-    })
+    });
+
+    function MoveLable(json, FCallback) {
+        var items = json.items, itemsW = json.itemsW, itemsH = json.itemsH, lable = json.lable,
+            setObjectParse = json.parent,
+            setObject = json.children, MH = setObject.height(), MW = setObject.width(), attrArr = [], setAttrArr = {},
+            setAllPo = [];
+        setObject.each(function (index) {
+            var getList = 'list' + index;
+            attrArr.push(getList);
+            $(this).attr('listinfo', getList);
+            setAttrArr[getList] = $(this).html();
+            setAllPo.push({
+                X: $(this).offset().left,
+                XW: $(this).offset().left + MW,
+                Y: $(this).offset().top,
+                YH: $(this).offset().top + MH
+            })
+        });
+        setLoop();
+
+        function setLoop() {
+            var getMain = setObjectParse.find(lable);
+            getMain.each(function (index) {
+                getMove(getMain, $(this), index, {
+                    iniXS: setObjectParse.offset().left,
+                    iniXE: setObjectParse.offset().left + setObjectParse.width(),
+                    iniYS: setObjectParse.offset().top,
+                    iniYE: setObjectParse.offset().top + setObjectParse.height(),
+                }, function (index, newindex) {
+                    FCallback(index, newindex);
+                    setLoop()
+                })
+            })
+        }
+
+        // 移动
+        function getMove(objAll, obj, index, MaxBoundary, callback) {
+
+            // 鼠标down
+            obj.mousedown(function (evt) {
+                var domXL = obj.offset().left - setObjectParse.offset().left - itemsW;
+                var domYT = obj.offset().top - setObjectParse.offset().top - itemsH;
+                obj.addClass('mainHActive');
+                obj.css({
+                    'top': domYT + "px",
+                    'left': domXL + "px",
+                });
+                // ---------索引数组处理---------
+                var setStr = obj.attr('listinfo');
+                var setOtherStr = index;
+                // 位置 next|pro
+                if (index % items == items - 1) {
+                    obj.prev().css({
+                        'marginRight': itemsW * 3 + MW + "px"
+                    })
+                } else {
+                    obj.next().css({
+                        'marginLeft': itemsW * 3 + MW + "px"
+                    })
+                }
+                // 移动事件
+                $(document).bind('mousemove', function (ev) {
+                    var moveEX = ev.clientX - evt.clientX;
+                    var moveEY = ev.clientY - evt.clientY;
+                    var getScroll = $(document).scrollTop()
+                    if ((ev.clientX > MaxBoundary.iniXS && ev.clientX < MaxBoundary.iniXE) && (ev.clientY + getScroll > MaxBoundary.iniYS && ev.clientY + getScroll < MaxBoundary.iniYE)) {
+                        obj.css({
+                            'top': domYT + moveEY + "px",
+                            'left': domXL + moveEX + "px",
+                        });
+                        var getItemsP = {
+                            X: obj.offset().left + MW / 2,
+                            Y: obj.offset().top + MH / 2
+                        };
+                        // 位置--插入
+                        for (var j = 0; j < setAllPo.length; j++) {
+                            if ((getItemsP.X >= setAllPo[j].X && getItemsP.X <= setAllPo[j].XW) && (getItemsP.Y >= setAllPo[j].Y && getItemsP.Y <= setAllPo[j].YH)) {
+                                objAll.css({'margin': itemsW + "px " + itemsH + "px"});
+                                setOtherStr = j;
+                                var setItemsIndex = {
+                                    before: 0,
+                                    after: 0
+                                };
+                                if (j == index) {
+                                    setItemsIndex = {
+                                        before: j - 1,
+                                        after: j + 1
+                                    }
+                                } else if (j < index) {
+                                    setItemsIndex = {
+                                        before: j - 1,
+                                        after: j
+                                    }
+                                } else {
+                                    setItemsIndex = {
+                                        before: j,
+                                        after: j + 1
+                                    }
+                                }
+                                if (j % items == items - 1) {
+                                    objAll.eq(setItemsIndex.before).css({
+                                        'marginRight': itemsW * 3 + MW + "px"
+                                    })
+                                } else {
+                                    objAll.eq(setItemsIndex.after).css({
+                                        'marginLeft': itemsW * 3 + MW + "px"
+                                    })
+                                }
+                            }
+                        }
+                    } else {
+                        mouseEnd(attrArr.length)
+                    }
+                });
+                // 鼠标 up
+                obj.mouseup(function () {
+                    // 索引数组
+                    mouseEnd(setOtherStr)
+                });
+
+                function mouseEnd() {
+                    if (attrArr.indexOf(setStr) != -1) {
+                        attrArr.splice(attrArr.indexOf(setStr), 1);
+                        attrArr.splice(setOtherStr, 0, setStr)
+                    }
+                    var newindex = parseInt(setStr.replace('list', ''));
+                    $(document).unbind('mousemove');
+                    obj.removeClass('mainHActive');
+                    setObjectParse.html(' ');
+                    for (var i = 0; i < attrArr.length; i++) {
+                        setObjectParse.append('<' + lable + ' listinfo=' + attrArr[i] + '>' + setAttrArr[attrArr[i]] + '</' + lable + '>')
+                    }
+                    callback(index, newindex)
+                }
+            })
+        }
+    }
 </script>
 </body>
 </html>

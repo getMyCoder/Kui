@@ -66,3 +66,28 @@ h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
     .docTitleImg{display: block;}
 }
 
+
+.moveDiv {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+}
+
+.moveDiv h2 {
+    width: 29%;
+    height: 100px;
+    background: #ccc;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    line-height: 100px;
+    margin: 15px;
+}
+
+.mainHActive {
+    position: absolute;
+    user-select: none;
+}
