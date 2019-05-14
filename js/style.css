@@ -64,8 +64,21 @@ h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
     .right{width: auto !important;float: none;margin: 0 auto;}
     .left{width: 100% !important;left: 0 !important;display: none;z-index: 9999999999 !important;}
     .docTitleImg{display: block;}
-}
 
+
+    .compressCoder {}
+    .odlCoder {width: 100%;height: 300px;}
+    .newCoder {width: 100%;height: 300px;}
+    .middle {width: 100%;margin:15px 0; }
+    .changeCoder {min-width: 100px;}
+}
+@media (min-width: 1100px){
+    .compressCoder {height: 510px;overflow: hidden;}
+    .odlCoder {width: 40%;height: 500px;float: left;}
+    .newCoder {width: 40%;height: 500px;float: right;}
+    .middle {width: 15%; float: left;margin: 0 15px; height: 500px;text-align: center;}
+    .changeCoder {margin: 50px auto 0;min-width: 100px;display: block;}
+}
 
 .moveDiv {
     width: 100%;
@@ -91,3 +104,11 @@ h1,h2,h3,h4,h5,h6{padding: 0;margin: 0;}
     position: absolute;
     user-select: none;
 }
+
+
+
+.compressCoder {width: 100%;margin: 0 auto;}
+.odlCoder {border:1px solid #409EFF;}
+.newCoder {border:1px solid #409EFF;}
+.middle {}
+.changeCoder {height: 40px; font-size: 12px;background: #409EFF;border: none;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;color: #fff;cursor: pointer;outline: none;}

@@ -45,6 +45,7 @@
         <h2>页面交互</h2>
         <ul>
             <li><a href="#webIn1">拖动排序</a></li>
+            <li><a href="#webIn2">代码压缩</a></li>
         </ul>
     </div>
     <div class="leftItems">
@@ -342,6 +343,25 @@
                     <h2>8</h2>
                     <h2>9</h2>
                     <h2>10</h2>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="webIn2" class="linkA"></a>
+            <h2 class="ItemsTitleH2">代码压缩</h2>
+            <div class="context">
+                <div class="compressCoder">
+                    <div class="oldDiv">
+                        <textarea class="odlCoder" placeholder="要压缩的代码"></textarea>
+                    </div>
+                    <div class="middle">
+                        <button class="changeCoder htmlCoder">HTML压缩</button>
+                        <button class="changeCoder cssCoder">CSS压缩</button>
+                        <button class="changeCoder chCoder">CSS、HTML压缩</button>
+                    </div>
+                    <div class="newDiv">
+                        <textarea class="newCoder" placeholder="压缩后的代码"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1479,6 +1499,28 @@
             })
         }
     }
+
+    // 代码压缩
+    function CompressCoder() {
+        $(".htmlCoder").click(function () {
+            var getCoder = $(".odlCoder").val();
+            getCoder = getCoder.replace(/\s+\</g, '<');
+            $(".newCoder").val(getCoder)
+        });
+        $(".cssCoder").click(function () {
+            var getCoder = $(".odlCoder").val();
+            getCoder = getCoder.replace(/\s+\./g, '.');
+            console.log(getCoder);
+            $(".newCoder").val(getCoder)
+        });
+        $(".chCoder").click(function () {
+            var getCoder = $(".odlCoder").val();
+            getCoder = getCoder.replace(/\s+\</g, '<');
+            getCoder = getCoder.replace(/\s+\./g, '.');
+            $(".newCoder").val(getCoder)
+        })
+    }
+    CompressCoder()
 </script>
 </body>
 </html>
