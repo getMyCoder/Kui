@@ -357,7 +357,7 @@
                     <div class="middle">
                         <button class="changeCoder htmlCoder">HTML压缩</button>
                         <button class="changeCoder cssCoder">CSS压缩</button>
-                        <!--<button class="changeCoder chCoder">CSS、HTML压缩</button>-->
+                        <button class="changeCoder jsCoder">JavaScript压缩</button>
                     </div>
                     <div class="newDiv">
                         <textarea class="newCoder" placeholder="压缩后的代码"></textarea>
@@ -1302,6 +1302,7 @@
         }, function (index, newindex) {
             console.log(index, newindex);
         });
+        CompressCoder()
     });
     Kui.kuiTab(["商品1", "商品2", "商品3", "商品4", "商品5"]);
     Kui.Panel([
@@ -1503,20 +1504,35 @@
     // 代码压缩
     function CompressCoder() {
         $(".htmlCoder").click(function () {
+            var setSpace=['<','>'];
             var getCoder = $(".odlCoder").val();
-            getCoder = getCoder.replace(/\s+\</g, '<');
+            getCoder=setLookup(setSpace,getCoder);
             $(".newCoder").val(getCoder)
         });
         $(".cssCoder").click(function () {
+            var setSpace=[';','{','}'];
             var getCoder = $(".odlCoder").val();
-            getCoder = getCoder.replace(/\;\s+/g, ';');
-            getCoder = getCoder.replace(/\s+\;/g, ';');
-            getCoder = getCoder.replace(/\{\s+/g, '{');
-            getCoder = getCoder.replace(/\}\s+/g, '}');
+            getCoder=setLookup(setSpace,getCoder);
             $(".newCoder").val(getCoder)
         });
+        $(".jsCoder").click(function () {
+            var setSpace=['{','}','(',')','[',']',';',',',':','=','-','+','*'];
+            var getCoder = $(".odlCoder").val();
+            getCoder=setLookup(setSpace,getCoder);
+            $(".newCoder").val(getCoder)
+        });
+        function setLookup(Arrays,Strings) {
+            var setRE;
+            for(var i=0;i<Arrays.length;i++){
+                setRE=new RegExp('\\'+Arrays[i]+'\\\s+','g');
+                Strings = Strings.replace(setRE,Arrays[i]);
+                setRE=new RegExp('\\s+\\'+Arrays[i],'g');
+                Strings = Strings.replace(setRE,Arrays[i]);
+            }
+            return Strings
+        }
     }
-    CompressCoder()
+
 </script>
 </body>
 </html>
