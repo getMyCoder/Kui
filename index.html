@@ -46,6 +46,7 @@
         <ul>
             <li><a href="#webIn1">拖动排序</a></li>
             <li><a href="#webIn2">代码压缩</a></li>
+            <li><a href="#webIn3">列表拖动</a></li>
         </ul>
     </div>
     <div class="leftItems">
@@ -362,6 +363,16 @@
                     <div class="newDiv">
                         <textarea class="newCoder" placeholder="压缩后的代码"></textarea>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightItems">
+            <a name="webIn3" class="linkA"></a>
+            <h2 class="ItemsTitleH2">列表拖动</h2>
+            <div class="context">
+                <div class="moveList">
+                    <h2 class="lableH2List"></h2>
+                    <div class="lableList"></div>
                 </div>
             </div>
         </div>
@@ -1258,7 +1269,7 @@
             W: document.documentElement.clientWidth
         };
         if (document.documentElement.clientWidth > 1100) {
-            $(".left").fadeIn()
+            $(".left").fadeIn();
             $(".left").css({
                 "left": $(".container").offset().left + "px"
             });
@@ -1303,7 +1314,10 @@
         }, function (index, newindex) {
             console.log(index, newindex);
         });
-        CompressCoder()
+        // 代码压缩
+        CompressCoder();
+        // 列表拖动
+        ListMoveCoder()
     });
     Kui.kuiTab(["商品1", "商品2", "商品3", "商品4", "商品5"]);
     Kui.Panel([
@@ -1505,35 +1519,124 @@
     // 代码压缩
     function CompressCoder() {
         $(".htmlCoder").click(function () {
-            var setSpace=['<','>'];
+            var setSpace = ['<', '>'];
             var getCoder = $(".odlCoder").val();
-            getCoder=setLookup(setSpace,getCoder);
+            getCoder = setLookup(setSpace, getCoder);
             $(".newCoder").val(getCoder)
         });
         $(".cssCoder").click(function () {
-            var setSpace=[';','{','}'];
+            var setSpace = [';', '{', '}'];
             var getCoder = $(".odlCoder").val();
-            getCoder=setLookup(setSpace,getCoder);
+            getCoder = setLookup(setSpace, getCoder);
             $(".newCoder").val(getCoder)
         });
         $(".jsCoder").click(function () {
-            var setSpace=['{','}','(',')','[',']',';',',',':','=','-','+','*'];
+            var setSpace = ['{', '}', '(', ')', '[', ']', ';', ',', ':', '=', '-', '+', '*'];
             var getCoder = $(".odlCoder").val();
-            getCoder=setLookup(setSpace,getCoder);
+            getCoder = setLookup(setSpace, getCoder);
             $(".newCoder").val(getCoder)
         });
-        function setLookup(Arrays,Strings) {
+
+        function setLookup(Arrays, Strings) {
             var setRE;
-            for(var i=0;i<Arrays.length;i++){
-                setRE=new RegExp('\\'+Arrays[i]+'\\\s+','g');
-                Strings = Strings.replace(setRE,Arrays[i]);
-                setRE=new RegExp('\\s+\\'+Arrays[i],'g');
-                Strings = Strings.replace(setRE,Arrays[i]);
+            for (var i = 0; i < Arrays.length; i++) {
+                setRE = new RegExp('\\' + Arrays[i] + '\\\s+', 'g');
+                Strings = Strings.replace(setRE, Arrays[i]);
+                setRE = new RegExp('\\s+\\' + Arrays[i], 'g');
+                Strings = Strings.replace(setRE, Arrays[i]);
             }
             return Strings
         }
     }
 
+    // 列表拖动
+    function ListMoveCoder() {
+        for (var i = 1; i <= 40; i++) {
+            $(".lableList").append('<em>' + i + '</em>')
+        }
+        var dom = {
+            itemsPP: $(".moveList"),
+            itemsP: $(".lableList"),
+            items: $(".lableList em"),
+            hideDiv: $(".lableH2List")
+        };
+        moveList(dom);
+    }
+
+    function moveList(Obj) {
+        Obj.itemsP.css({
+            width: Obj.items.length * Obj.items.width()
+        });
+        var getIndex = parseInt((Obj.itemsPP.width() / Obj.items.width() / 2));
+        Obj.hideDiv.css({
+            'left': getIndex * Obj.items.width() + "px",
+            'width': Obj.items.width() + "px",
+            'height': Obj.items.height() + "px"
+        });
+        var mainPosition = {
+            xStart: Obj.itemsPP.offset().left,
+            xEnd: Obj.itemsPP.offset().left + Obj.itemsPP.width(),
+            yStart: Obj.itemsPP.offset().top,
+            yEnd: Obj.itemsPP.offset().top + Obj.itemsPP.height(),
+        };
+        changeBig(Obj);
+        Obj.itemsP.mousedown(function (evd) {
+            var getStartP = parseFloat(Obj.itemsP.css('marginLeft'));
+            $(document).bind("mousemove", function (evm) {
+                Obj.itemsP.css({
+                    'marginLeft': (evm.clientX - evd.clientX + getStartP) + "px"
+                });
+                if (
+                    evm.clientX < mainPosition.xStart ||
+                    evm.clientX > mainPosition.xEnd ||
+                    evm.clientY + $(document).scrollTop() < mainPosition.yStart ||
+                    evm.clientY + $(document).scrollTop() > mainPosition.yEnd
+                ) {
+                    setUpEnd(Obj)
+                }
+                changeBig(Obj)
+            });
+            Obj.itemsP.mouseup(function () {
+                setUpEnd(Obj);
+                changeBig(Obj)
+            })
+        });
+    }
+
+    // 鼠标超出区域的位置
+    function setUpEnd(Obj) {
+        $(document).unbind('mousemove');
+        var endGetP = parseFloat(Obj.itemsP.css('marginLeft'));
+        if (endGetP > 0) {
+            Obj.itemsP.animate({
+                'marginLeft': 0
+            }, 100, function () {
+                changeBig(Obj)
+            })
+        }
+        if (endGetP < -(Obj.itemsP.width() - Obj.itemsPP.width())) {
+            Obj.itemsP.animate({
+                'marginLeft': -(Obj.itemsP.width() - Obj.itemsPP.width()) + "px"
+            }, 100, function () {
+                changeBig(Obj)
+            })
+        }
+    }
+
+    // 当前字段变大
+    function changeBig(Obj) {
+        var newObj = Obj.items;
+        newObj.each(function (index) {
+            var itemsLeft = $(this).offset().left + $(this).width() / 2;
+            if (itemsLeft > Obj.hideDiv.offset().left && itemsLeft < Obj.hideDiv.offset().left + Obj.hideDiv.width()) {
+                newObj.eq(index - 2).addClass("activeBB").siblings().removeClass('activeBB');
+                newObj.eq(index - 1).addClass("activeB").siblings().removeClass('activeB');
+                newObj.eq(index).addClass("activeC").siblings().removeClass('activeC');
+                newObj.eq(index + 1).addClass("activeA").siblings().removeClass('activeA');
+                newObj.eq(index + 2).addClass("activeAA").siblings().removeClass('activeAA');
+            }
+        })
+    }
 </script>
 </body>
 </html>
